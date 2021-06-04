@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+#couple_page			{ position: relative; padding: 50px 0; }
+
+#couple_list	{ text-align: center; }
+#couple_list li	{ display: block; padding-bottom: 50px; }

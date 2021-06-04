@@ -1,0 +1,188 @@
+@charset "utf-8";
+
+#board_page			{ position: relative; padding: 170px 75px 75px; max-width: 1067px; margin: 25px auto 0; box-sizing: border-box; }
+#board_page > *		{ position: relative; z-index: 1; }
+#board_page:before	{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 10px;
+	bottom: 10px;
+	left: 16px;
+	right: 16px;
+	z-index: -1;
+	background: rgba(0, 0, 0, 0.8);
+}
+#board_page:after	{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+
+
+/*********************************
+	세계관 헤더 부분
+**********************************/
+
+#board_head	{
+	position: absolute;
+	top: 0;
+	left: 46px;
+	right: 46px;
+	height: 30px;
+	background: url('../img/world/img_header_single_02.png') repeat-x 0 0;
+	z-index: 0;
+}
+#board_head:before	{
+	content: "";
+	display: block;
+	position: absolute;
+	width: 46px;
+	top: 0;
+	height: 122px;
+	left: -46px;
+	background: url('../img/world/img_header_single_01.png') no-repeat 0 0;
+	background-size: auto 100%;
+}
+#board_head:after	{
+	content: "";
+	display: block;
+	position: absolute;
+	width: 46px;
+	top: 0;
+	height: 122px;
+	right: -46px;
+	background: url('../img/world/img_header_single_03.png') no-repeat 100% 0;
+	background-size: auto 100%;
+}
+
+
+/*********************************
+	세계관 푸터 부분
+**********************************/
+
+#board_footer	{
+	position: absolute;
+	bottom: 0;
+	left: 46px;
+	right: 47px;
+	height: 86px;
+	background: url('../img/world/img_footer_02.png') repeat-x 0 0;
+	background-size: auto 100%;
+	z-index: 0;
+}
+#board_footer:before	{
+	content: "";
+	display: block;
+	position: absolute;
+	width: 46px;
+	top: 0;
+	bottom: 0;
+	left: -46px;
+	background: url('../img/world/img_footer_01.png') no-repeat 0 0;
+	background-size: auto 100%;
+}
+#board_footer:after	{
+	content: "";
+	display: block;
+	position: absolute;
+	width: 47px;
+	top: 0;
+	bottom: 0;
+	right: -47px;
+	background: url('../img/world/img_footer_03.png') no-repeat 100% 0;
+	background-size: auto 100%;
+}
+
+
+
+
+/*********************************
+	세계관 메뉴 부분
+**********************************/
+
+
+#board_menu	{ 
+	display: block;
+	position: absolute;
+	top: 30px;
+	left: 46px;
+	right: 46px;
+	text-align: center;
+	font-family: 'Nanum MyeongJo';
+}
+#board_menu li	{
+	display: inline-block;
+}
+#board_menu li a	{
+	line-height: 55px;
+	font-size: 18px;
+	padding: 0 20px;
+}
+#lnb_mark {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	z-index: 1;
+}
+#lnb_mark img	{ margin-left: 14%; }
+
+#board_line	{
+	position: absolute;
+	bottom: -15px;
+	left: 43px;
+	right: 43px;
+	height: 15px;
+	background: url('../img/world/img_world_line_02.png') repeat-x 0 0;
+	z-index: 0;
+}
+#board_line:before	{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -43px;
+	bottom: 0;
+	width: 43px;
+	background: url('../img/world/img_world_line_01.png') no-repeat 0 0;
+}
+#board_line:after	{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	right: -43px;
+	bottom: 0;
+	width: 43px;
+	background: url('../img/world/img_world_line_03.png') no-repeat 100% 0;
+}
+
+
+
+
+/*********************************
+	반응형 처리
+**********************************/
+
+@media all and (max-width: 670px) {
+	.fix-layout	{ padding: 0; }
+	#board_menu li a	{
+		font-size: 14px;
+		padding: 0 10px;
+		line-height: 40px;
+	}
+
+	#lnb_mark	{ width: 70px; }
+
+}
+@media all and (max-width: 670px) {
+	#board_page	{ padding: 120px 45px 85px; }
+	#board_page:before	{ left: 10px; right: 10px; }
+}
+@media all and (max-width: 640px) {
+	#board_page	{ padding: 120px 10px 85px; }
+}
+
+

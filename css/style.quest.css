@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+html	{ background: none !important; height: 100%; overflow: hidden; }
+html:before	{ display: none !important; }
+body	{
+	background: url('../img/bak_quest.jpg') 50% 0 !important;
+	background-size: cover !important;
+	height: 100%;
+	overflow: auto;
+}
+
+#nav	{ position: absolute; top: 20px; right: 20px; z-index: 999; }
+#nav a	{
+	display: block;
+	margin-bottom: 10px;
+}

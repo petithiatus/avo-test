@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+
+
+.ready-member-list							{ display: block; position: relative; overflow: hidden; }
+.ready-member-list li						{ float: left; width: 50%; margin-bottom: 8px; }
+.ready-member-list li.empty					{ width: 100%; line-height: 300px; text-align: center; }
+.ready-member-list li .item					{ position: relative; padding: 10px; margin: 0 5px;  }
+.ready-member-list li .ui-thumb				{ display: block; position: absolute; top: 10px; left: 10px; width: 80px; height: 80px; overflow: hidden; box-sizing: border-box; }
+.ready-member-list li .ui-thumb span		{ display: block; position: absolute; top: 0; bottom: 0; left: 0; right: 0; text-align: center; font-size: 11px; line-height: 96px; opacity: 1; }
+.ready-member-list li .ui-thumb span.ing	{ }
+.ready-member-list li .ui-thumb span.com	{ display: none; }
+.ready-member-list li .ui-thumb a:hover span	{ opacity: 0; }
+
+.ready-member-list li .ui-profile			{ display: block; position: relative; margin-left: 95px; min-height: 85px; }
+.ready-member-list li .ui-profile i			{ display: block; position: absolute; top: 0; left: 0; width: 18px; }
+.ready-member-list li .ui-profile .name		{ padding: 5px 0; }
+.ready-member-list li .ui-profile em		{ display: block; font-style: normal; font-size: 11px; }
+.ready-member-list li .ui-profile strong	{ font-size: 14px; }
+.ready-member-list li .ui-profile span		{ display: block; padding: 3px 0; font-size: 11px; }
+.ready-member-list li .ui-profile span.owner	{ text-align: right; margin-top: 5px; padding-top: 5px; }
+
+@media all and (max-width: 1000px) {
+	#submenu li.menu-first	{ display: block; text-align: center; }
+}
+
+@media all and (max-width: 640px) { 
+	.ready-member-list li	{ width: 100%; }
+}
+
+
+#member_page	{ padding: 20px 0; }
+#member_page h2	{ padding-bottom: 20px; }
+
+#member_page .member-list		{ text-align: center; }
+#member_page .member-list li	{
+	display: inline-block;
+	padding: 5px 5px 10px;
+}
+#member_page .member-list li .ui-profile	{
+	padding: 10px 0 0;
+	height: 30px;
+}
+
+#member_page .member-list .no-data	{ line-height: 200px; }
