@@ -17,8 +17,8 @@ function editor_html($id, $content, $is_dhtml_editor=true)
 	//$content = '<figure class="media"><div data-oembed-url="https://www.youtube.com/watch?v=-DTcjz4zivo"></div></fingure>';
 	//echo $content;
 
-    if(
-        $is_dhtml_editor && $content &&
+    if( 
+        $is_dhtml_editor && $content && 
         (
         (!$w && (isset($board['bo_insert_content']) && !empty($board['bo_insert_content'])))
         || ($w == 'u' && isset($write['wr_option']) && strpos($write['wr_option'], 'html') === false )
@@ -45,13 +45,13 @@ function editor_html($id, $content, $is_dhtml_editor=true)
     $html .= '<textarea id="'.$id.'" name="'.$id.'" class="'.$ckeditor_class.'" maxlength="65536">'.$content.'</textarea>';
     $html .= '<span class="sound_only">웹 에디터 끝</span>';
 	$html .= '
-		<script>
+		<script> 
 			ClassicEditor.create( document.querySelector("#'.$id.'"), {
-				language: "ko",
-				toolbar: { items: ["fontFamily", "fontSize", "|", "bold", "italic", "strikethrough", "underline", "|", "alignment", "|", "fontColor", "fontBackgroundColor", "|", "bulletedList", "numberedList", "todoList", "|", "imageUpload", "mediaEmbed", "link"] }, 
+				language: "ko", 
+				toolbar: { items: ["bold", "italic", "strikethrough", "underline", "|", "fontColor", "fontBackgroundColor", "|", "bulletedList", "numberedList", "|", "imageUpload", "mediaEmbed", "link"] }, 
 				mediaEmbed: { previewsInData: true, removeProviders: ["instagram", "twitter", "googleMaps", "flickr", "facebook"] },
-				extraPlugins: [CKEditorUploadAdapterPlugin]
-			}).then(newEditor=>{ '.$id.'_editor=newEditor }).catch(error=>{console.error(error); });
+				extraPlugins: [CKEditorUploadAdapterPlugin] 
+			}).then(newEditor=>{ '.$id.'_editor=newEditor }).catch(error=>{console.error(error); }); 
 		</script>
 		';
 
