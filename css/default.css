@@ -23,11 +23,20 @@
 @font-face {
     font-family: 'HeirofLightBold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/HeirofLightBold.woff') format('woff');
-    font-weight: normal;
+    font-weight: bold;
     font-style: normal;}
 
-/* 바른바탕체 */
-@import url('//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+/* 이롭게 바탕체 */
+@font-face {
+  src: url('//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+  font-family: 'Iropke Batang';}
+
+/*스포카 한 산스*/
+  @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+  .spoka * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
+
+
 /* 글꼴 추가 끝 */
 
 

@@ -11,41 +11,17 @@ if($is_member) {
 $commu_conf = sql_fetch(" select * from {$g5['article_default_table']} ");
 
 $write_action_url = G5_BBS_URL."/write_update.php";
-$cate=explode("|",$board['bo_category_list']);
-$category_option="";
-for($i=0;$i<count($cate);$i++){
-$bo=sql_fetch("select bo_subject from {$g5['board_table']} where bo_table='{$cate[$i]}'");
-if($cate[$i]==$sca) $sel="selected";
-else $sel="";
-$category_option.="<option value=\"{$cate[$i]}\" {$sel}>{$bo['bo_subject']}</option>\n";
-}
-if($commu_conf['ad_use_title']){
-$title_sql = "select * from {$g5['title_table']} where ti_use='Y' order by ti_title";
-	$title_result = sql_query($title_sql);
-	$ti = array();
-	for($i = 0; $title_list = sql_fetch_array($title_result); $i++) {
-		$ti[$i] = $title_list;
-	}
-}
-if($commu_conf['ad_use_inven']){
-$item_sql = "select * from {$g5['item_table']} where it_use='Y' and it_category!='개인' order by it_name ";
-$item_result = sql_query($item_sql);
-$it= array();
-for($i = 0; $item_list = sql_fetch_array($item_result); $i++) {
-	$it[$i] = $item_list;
-}
-}
 ?>
 
-<p class="txt-right"><? if($admin_href){?><a href="<?=$admin_href?>" class="ui-btn admin" target="_blank">관리자</a><?}?></p>
 <? if($board['bo_content_head']) { ?>
-	<div class="board-notice theme-box txt-center">
+	<div class="board-notice">
 		<?=stripslashes($board['bo_content_head']);?>
 	</div><hr class="padding" />
 <? } ?>
 
 <? if ($write_href) { 
-	$upload_action_url = G5_BBS_URL."/write_update.php"; 
+	$upload_action_url = G5_BBS_URL."/write_update.php";
+	$category_option = get_category_option($bo_table, $sca);
 ?>
 <div class="list-write-area">
 	<a href="#" class="btn-write ui-btn point" onclick="$('#write_box').slideToggle(); return false;">정산글 등록하기</a>
@@ -60,15 +36,15 @@ for($i = 0; $item_list = sql_fetch_array($item_result); $i++) {
 			<input type="hidden" name="wr_subject" value="<?=$character['ch_name'] ? $character['ch_name'] : "GUEST"?>" />
 
 			<div class="list-write-box">
-				<?if($is_category){?><select name="ca_name" id="ca_name" required class="required" >
-					<option value="">게시판 선택</option>
-					<?=$category_option?>
+				<select name="ca_name" id="ca_name" required class="required" >
+					<option value="">정산 분류 선택</option>
+					<?php echo $category_option ?>
 				</select>
-				<?}?>
+				
 				<fieldset>
 					<textarea name="wr_content"></textarea>
 				</fieldset>
-				<button type="submit" accesskey="s" class="ui-btn">등록하기</button>
+				<button type="submit" id="btn_submit" accesskey="s" class="ui-btn">등록하기</button>
 			</div>
 		</form>
 		<script>
@@ -86,7 +62,8 @@ for($i = 0; $item_list = sql_fetch_array($item_result); $i++) {
 						}
 					}
 				}
-				document.getElementsByTagName("button['submit']").disabled = "disabled";
+
+				document.getElementById("btn_submit").disabled = "disabled";
 				return true;
 			}
 		</script>
@@ -99,15 +76,14 @@ for($i = 0; $item_list = sql_fetch_array($item_result); $i++) {
 <div class="board-skin-caculate">
 
 	<!-- 게시판 카테고리 시작 { -->
-	<nav  class="board-category">
 	<? if ($is_category) { ?>
+	<nav  class="board-category">
 		<select name="sca" id="sca" onchange="location.href='?bo_table=<?=$bo_table?>&sca=' + this.value;">
 			<option value="">전체</option>
 			<? echo $category_option ?>
 		</select>
-		<?if($is_member){?><a href="./board.php?bo_table=<?=$bo_table?>&sfl=mb_id,1&stx=<?=$member['mb_id']?>" class="ui-btn point calc">내 정산글 보기</a><?} //@210404?>
-	<? } ?>
 	</nav>
+	<? } ?>
 	<!-- } 게시판 카테고리 끝 -->
 
 	<div class="board-list">
@@ -116,12 +92,6 @@ for($i = 0; $item_list = sql_fetch_array($item_result); $i++) {
 		$data = $list[$i];
 		$ch = get_character($data['ch_id']);
 		$content = conv_content($data['wr_content'], 0, 'wr_content');
-		// 해시태그 설정
-		$hash_pattern = "/\\#([0-9a-zA-Z가-힣_])([0-9a-zA-Z가-힣_]*)/";
-		$content = preg_replace($hash_pattern, '<a href="?bo_table='.$data['ca_name'].'&amp;hash=%23$1$2" class="link_hash_tag" target="_blank">&#35;$1$2</a>', $content);
-		// 로그링크 설정
-		$log_pattern = "/\\@([0-9])([0-9]*)/";
-		$content = preg_replace($log_pattern, '<a href="?bo_table='.$data['ca_name'].'&amp;log=$1$2&amp;single=Y" target="_blank" class="log_link_tag">$1$2</a>', $content);
 ?>
 		<div class="calc-item">
 			<div class="thumb">
@@ -132,19 +102,17 @@ for($i = 0; $item_list = sql_fetch_array($item_result); $i++) {
 					<p class="name">
 						<? if($data['wr_10']) { ?><i class="state" data-item = "<?=$data['wr_10']?>"><?=$data['wr_10']?></i><? } ?>
 						<span>
-							<?if($is_category){
-							$ca=sql_fetch("select bo_subject from {$g5['board_table']} where bo_table='{$data['ca_name']}'");?>[<?=$ca['bo_subject']?>]<?}?>
 							<a href="<?=G5_URL?>/member/viewer.php?ch_id=<?=$ch['ch_id']?>"><?=$ch['ch_name']?></a>
-							<a href="<?=G5_BBS_URL?>/memo_form.php?me_recv_mb_id=<?$data['mb_id']?>" class='send_memo'>[<?=$data['wr_name']?>]</a>
+							[ <?=$data['wr_name']?> ]
 
 							<?
 								if(($data['mb_id'] == $member['mb_id'] && $data['wr_10'] == '') || $is_admin) { 
-									$delete_href = G5_BBS_URL.'/delete.php?bo_table='.$bo_table.'&amp;wr_id='.$data['wr_id'];
+									$delete_href ='./delete.php?bo_table='.$bo_table.'&amp;wr_id='.$data['wr_id'];
 							?>
 						</span>
 						<sup class="calc-btn-box">
-							<? if(($data['mb_id'] == $member['mb_id'] && $data['wr_10'] == '') || $is_admin) { ?><a href="#" onclick="$(this).closest('.con-box').find('.modify-con').toggle(); return false;" class="btn-mod">수정</a><?}?>
-							<a href="<?=$delete_href?>" onclick="return comment_delete();"  class="btn-del">삭제</a>
+							<a href="#" onclick="$(this).closest('.con-box').find('.modify-con').toggle(); return false;" class="btn-mod">수정</a>
+							<a href="<?=$delete_href?>"  class="btn-del">삭제</a>
 						</sup>
 						<? } ?>
 					</p>
@@ -159,22 +127,17 @@ for($i = 0; $item_list = sql_fetch_array($item_result); $i++) {
 							<input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">
 							<input type="hidden" name="wr_10" value="<?php echo $data['wr_10'] ?>">
 							<input type="hidden" name="wr_id" value="<?php echo $data['wr_id'] ?>">
-							<input type="hidden" name="wr_subject" value="<?php echo $data['wr_subject'] ?>"> 
-							<? if ($is_category) { ?>
+							<input type="hidden" name="wr_subject" value="<?php echo $data['wr_subject'] ?>">
 							<select name="ca_name">
-								<option value="">게시판 선택</option>
-								<? $ca_list=explode("|",$board['bo_category_list']);
-									for($j=0;$j<count($ca_list);$j++){
-									$bo=sql_fetch("select bo_subject from {$g5['board_table']} where bo_table='{$cate[$j]}'"); ?>
-									<option value="<?=$ca_list[$j]?>" <?if($ca_list[$j]==$data['ca_name']) echo "selected";?>><?=$bo['bo_subject']?></option>
-									<?}?>
+								<option value="">정산 분류 선택</option>
+								<?php echo get_category_option($bo_table, $data['ca_name']); ?>
 							</select>
-							<?}?>
 							<textarea name="wr_content"><?=$data['wr_content']?></textarea>
-							<button type="submit" accesskey="s" class="btn_submit ui-btn point">내용수정완료</button>
+							<button type="submit" id="btn_submit" accesskey="s" class="btn_submit ui-btn point">내용수정완료</button>
 						</form>
 					</div>
 					<? } ?>
+
 					<? include($board_skin_path."/view_comment.php");?>
 					<? if($is_admin) { ?>
 					<div class="comment-form-box">
@@ -216,12 +179,6 @@ for($i = 0; $item_list = sql_fetch_array($item_result); $i++) {
 </div>
 
 <script>
-$('.send_memo').on('click', function() {
-	var target = $(this).attr('href');
-	window.open(target, 'memo', "width=500, height=300");
-	return false;
-});
-
 var avo_mb_id = "<?=$member['mb_id']?>";
 var avo_board_skin_path = "<?=$board_skin_path?>";
 var avo_board_skin_url = "<?=$board_skin_url?>";
@@ -233,7 +190,7 @@ function fviewcomment_submit(f)
 {
 	set_comment_token(f);
 	var pattern = /(^\s*)|(\s*$)/g; // \s 공백 문자
-	var w="<?=$w?>";
+
 	var content = "";
 	$.ajax({
 		url: g5_bbs_url+"/ajax.filter.php",
@@ -282,25 +239,12 @@ function fviewcomment_submit(f)
 		}
 	}
 
-	if(w=='c'){
-	if(f.mo_value.value && !f.mo_content.value){
-		alert("화폐 지급사유를 입력해주세요");
-		f.mo_content.focus();
-		return false;
-	}
-	if(f.ex_value.value && !f.ex_content.value){
-		alert("경험치 지급사유를 입력해주세요");
-		f.ex_content.focus();
-		return false;
-	}
-	}
-
 	return true;
 }
 
 function comment_delete()
 {
-	return confirm("삭제하시겠습니까?");
+	return confirm("이 댓글을 삭제하시겠습니까?");
 }
 
 function comment_box(co_id, wr_id) { 
@@ -320,19 +264,10 @@ function comment_box(co_id, wr_id) {
 function modify_commnet(co_id) { 
 	var modify_form = document.getElementById('frm_modify_comment');
 	var wr_content = $('#save_co_comment_'+co_id).val();
-	var wr_1 = $('#save_co_'+co_id).val();
-	var state= $('#save_state_'+co_id).val();
 
 	modify_form.wr_content.value = wr_content;
-	modify_form.wr_1.value=wr_1;
-	modify_form.state.value=state;
 	$('#frm_modify_comment').submit();
 }
-
-$('.add_item').click(function(){
-	var item= $(this).next().clone().appendTo($(this).parent());
-	return false;
-});
 
 </script>
 
@@ -344,9 +279,8 @@ $('.add_item').click(function(){
 	<input type="hidden" name="stx" value="<?php echo $stx ?>">
 	<input type="hidden" name="spt" value="<?php echo $spt ?>">
 	<input type="hidden" name="page" value="<?php echo $page ?>">
-	<input type="hidden" name="wr_1" value="">
+
 	<input type="hidden" name="comment_id" value="">
-	<input type="hidden" name="state" value="">
 	<input type="hidden" name="wr_id" value="">
 	<textarea name="wr_content" style="display: none;"></textarea>
 	<button type="submit" style="display: none;"></button>

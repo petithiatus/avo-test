@@ -5,7 +5,6 @@ if ($is_comment_write) {
 	if($w == '') $w = 'c';
 ?>
 <!-- 댓글 쓰기 시작 { -->
-<hr class="line">
 <aside class="bo_vc_w" id="bo_vc_w_<?=$data['wr_id']?>">
 	<form name="fviewcomment" action="./write_comment_update.php" onsubmit="return fviewcomment_submit(this);" method="post" autocomplete="off">
 	<input type="hidden" name="w" value="<?php echo $w ?>" id="w">
@@ -36,62 +35,32 @@ if ($is_comment_write) {
 
 	<? if($commu_conf['ad_use_money']) { ?>
 	<div class="admin-comment">
-		<dl class="input money">
-			<dt>화폐지급</dt>
-			<dd>
-			<input type="text" name="mo_value" class="point" placeholder="지급금액">
-			<input type="text" name="mo_content" placeholder="지급내용">
-			</dd>
-		</dl>
+		<p class="input">
+			<strong>화폐지급</strong>
+			<input type="text" name="mo_value" class="point" placeholder="지급금액" title="지급금액"/>
+			<input type="text" name="mo_content" placeholder="지급 내용 입력" title="지급 내용 입력" />
+		</p>
 	</div>
 	<? } ?>
 	<? if($commu_conf['ad_use_exp']) { ?>
 	<div class="admin-comment">
-		<dl class="input exp">
-			<dt>경험치지급</dt>
-			<dd>
-			<input type="text" name="ex_value" class="point" placeholder="지급경험치">
-			<input type="text" name="ex_content" placeholder="지급내용">
-			</dd>
-		</dl>
+		<p class="input">
+			<strong>경험치지급</strong>
+			<input type="text" name="ex_value" class="point" placeholder="지급금액" title="지급경험치"/>
+			<input type="text" name="ex_content" placeholder="지급 내용 입력" title="지급 내용 입력" />
+		</p>
 	</div>
 	<? } ?>
-	<? if($commu_conf['ad_use_inven']) { ?>
-	<div class="admin-comment">
-		<dl class="input items">
-			<dt>아이템지급</dt>
-			<dd>
-			<a href="#" class="add_item ui-btn">+</a>
-			<select name="items[]" class="select-item">
-			<option value="">아이템 선택</option>
-			<?for($k=0;$k<count($it);$k++){?>
-			<option value="<?=$it[$k]['it_id']?>"><?=$it[$k]['it_name']?></option>
-			<?}?>
-			</select></dd>
-	</div> 
-	<? } ?>
-	<?if($commu_conf['ad_use_title']){?>
-	<div class="admin-comment">
-		<dl class="input titles">
-			<dt>타이틀지급</dt>
-			<dd>
-			<a href="#" class="add_item ui-btn">+</a>
-			<select name="titles[]" class="select-title" >
-			<option value="">타이틀 선택</option>
-			<?for($k=0;$k<count($ti);$k++){?>
-			<option value="<?=$ti[$k]['ti_id']?>"><?=$ti[$k]['ti_title']?></option>
-			<?}?>
-			</select></dd>
-		</dl>
-	</div>
-	<?}?>
+
+<? } ?>
+
 	<div class="input-comment">
-		<textarea name="wr_content" required class="required" placeholder="상세내역(상기 지급한 내역은 자동으로 출력됩니다)"></textarea>
-		<div class="btn_confirm">
-			<button type="submit" class="ui-comment-submit ui-btn">입력</button>
-		</div>
-	</div> 
-<? } ?> 
+		<textarea name="wr_content" required class="required" title="내용"></textarea>
+	</div>
+	<div class="btn_confirm">
+		<button type="submit" class="ui-comment-submit ui-btn">입력</button>
+	</div>
+
 	</form>
 </aside>
 <?

@@ -26,7 +26,6 @@ if($take_type == 'A') {
 					set ch_id = '{$ch['ch_id']}',
 						it_id = '$it_id',
 						it_name = '$it_name',
-						in_memo = '[정산]',
 						ch_name = '{$ch['ch_name']}'";
 		sql_query($sql);
 	}
@@ -46,7 +45,6 @@ if($take_type == 'A') {
 				set ch_id = '{$ch['ch_id']}',
 					it_id = '$it_id',
 					it_name = '$it_name',
-					in_memo = '[정산]',
 					ch_name = '{$ch['ch_name']}'";
 	sql_query($sql);
 }

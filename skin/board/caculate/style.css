@@ -2,7 +2,7 @@
 
 .wr_content textarea	{ height: 200px !important; }
 
-.board-notice	{ width: 450px; margin: 0 auto; }
+.board-notice	{ height: auto !important; background-size: 100% 100% !important; margin: 0 auto !important; }
 
 
 .board-category	{
@@ -51,7 +51,9 @@
 	border-radius: 9.0em;
 	padding: 0px 10px;
 	line-height: 33px;
-	height: 35px; 
+	height: 35px;
+	background: #02121e !important;
+	border: none !important;
 }
 
 
@@ -64,7 +66,7 @@
 #write_box textarea		{ height: 100px; }
 
 .board-list	{ padding: 0 10px; }
-.calc.ui-btn {line-height:28px;height:30px;padding:0 10px;}
+
 .calc-item	{
 	position: relative;
 	padding-left: 80px;
@@ -106,11 +108,11 @@
 .calc-item .name i[data-item="반려"]		{ background-color: #ab2323; }
 .calc-item .con	{
 	word-break:break-all;
-	padding: 10px;
-	margin: 10px 0 0; 
+	padding: 10px 0;
+	margin: 10px 0 0;
+	border-top: 1px solid rgba(255, 255, 255, .2);
 }
 
-.calc-item .con .log_link_tag:before	{ content: "\e936"; font-family: 'icon'; padding-right: 2px; display:inline-block;vertical-align:middle; }
 .calc-item .name span	{
 	display: inline-block;
 	padding-right: 10px;
@@ -131,8 +133,7 @@
 .calc-item .name sup a.btn-mod	{ background: #14526b; }
 .calc-item .name sup a.btn-del	{ background: #611a1a; }
 
-.calculated {font-weight:bold;padding-bottom:5px;}
-.calculated.error{font-weight:normal;opacity:0.7;}
+
 .modify-con	{ display: none; }
 
 .comment-box							{ padding: 10px 0; margin-top: 10px; }
@@ -145,11 +146,12 @@
 .comment-box .co-footer .f-box	{
 	display: inline-block;
 	padding: 4px 10px;
-	border-radius: 9.0em; 
+	border-radius: 9.0em;
+	border: 1px solid rgba(255, 255, 255, .2);
 }
 
-.board-list .bo_vc_w									{ position: relative; margin-top: 10px;}
-.board-list .bo_vc_w .input-comment						{ position: relative; margin-bottom: 5px; padding-right: 75px; }
+.board-list .bo_vc_w									{ position: relative; margin-top: 10px; padding-right: 75px; }
+.board-list .bo_vc_w .input-comment						{ position: relative; margin-bottom: 5px; }
 .board-list .bo_vc_w .input-comment textarea			{ display: block; width: 100%; height: 80px; box-sizing: border-box; margin: 0;}
 
 .board-list .bo_vc_w .btn_confirm						{ display: block; position: absolute; top: 0; right: 0; bottom: 0; width: 70px; }
@@ -159,25 +161,19 @@
 .board-list .modify_area textarea	{ display: block; width: 100%; min-height: 100px; padding: 10px; }
 .board-list .modify_area button	{ display: block; position: absolute; top: 0; right: 0; width: 60px; height: 100%; bottom: 0; }
 
- 
-.original_comment_area{padding: 0 10px;}
+
+.comment-box		{ border-top: 1px solid rgba(255, 255, 255, .2); }
+.comment-form-box	{ border-top: 1px solid rgba(255, 255, 255, .2); }
 
 .admin-comment						{ position: relative; }
 .admin-comment p					{ position: relative; padding: 4px 10px; }
 .admin-comment p label				{ margin-right: 5px; }
-.admin-comment p.input				{ padding: 0 0 0 290px; }
-.admin-comment p.input input.point	{ position: absolute; top: 0; left: 90px; width: 200px; }
+.admin-comment p.input				{ padding: 0 0 0 210px; }
+.admin-comment p.input input.point	{ position: absolute; top: 0; left: 110px; width: 100px; }
 .admin-comment p.input input		{ width: 100%; }
 .admin-comment p.input select,
-.admin-comment p.input strong		{ position: absolute; top: 0; left: 0; width: 100px; }
+.admin-comment p.input strong		{ position: absolute; top: 0; left: 0; width: 110px; }
 .admin-comment p.input strong		{ display: block; line-height: 30px; padding-left: 15px; }
-
-.admin-comment.form-input {height:auto;}
-
-.admin-comment dl {position:relative;padding-left:80px;margin:3px 0;}
-.admin-comment dl dt {position:absolute;width:80px;left:0;top:0;text-align:center;line-height:30px;}
-.admin-comment dl dd {margin:0;position:relative;}
-.admin-comment dl dd a.ui-btn {width:30px;padding:0;}
 
 .admin-comment.event-pannel input	{ width: 100%; }
 
@@ -187,17 +183,3 @@
 .con-box .modify-con select		{ width: 100%; }
 .con-box .modify-con textarea	{ height: 150px; }
 .con-box .modify-con button		{ width: 100%; }
-
-
-@media all and (max-width: 640px) {
-	.board-list .bo_vc_w {padding:0;} 
-	.admin-comment p.input				{ padding: 0; }
-	.admin-comment p.input input.point	{ position:relative; top:auto; left:auto; width: 100%; }
-	.admin-comment p.input input		{ display:block;width: 100%; }
-	.admin-comment p.input select,
-	.admin-comment p.input strong		{ position:relative; top: auto; left: auto; width: 100%; }
-	.admin-comment p.input strong		{ display: block; line-height: 30px; padding-left: 15px; }
-
-
-	.board-list .bo_vc_w .btn_confirm	{position:relative;width:100%;height:30px;top:auto;right:auto;bottom:auto;left:auto;}
-}

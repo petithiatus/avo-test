@@ -89,7 +89,7 @@ if($w == '') $write['wr_subject'] = $character['ch_name'];
 
 	<hr class="padding" />
 	<div class="btn_confirm txt-center">
-		<input type="submit" value="작성완료" accesskey="s" class="btn_submit ui-btn point">
+		<input type="submit" value="작성완료" id="btn_submit" accesskey="s" class="btn_submit ui-btn point">
 		<a href="./board.php?bo_table=<?php echo $bo_table ?>" class="btn_cancel ui-btn">취소</a>
 	</div>
 	</form>
@@ -174,7 +174,7 @@ if($w == '') $write['wr_subject'] = $character['ch_name'];
 
 		<?php echo $captcha_js; // 캡챠 사용시 자바스크립트에서 입력된 캡챠를 검사함  ?>
 
-		document.getElementsByTagName("button['submit']").disabled = "disabled";
+		document.getElementById("btn_submit").disabled = "disabled";
 
 		return true;
 	}

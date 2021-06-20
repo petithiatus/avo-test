@@ -19,19 +19,19 @@ include_once('./_head.php');
 			<tr>
 				<th>오너</th>
 				<td>
-					<?=$member[mb_nick]?> <? if($member[mb_birth]) { ?>( <?=@number_format($member[mb_birth])?> 년생 )<? } ?>
+					<?=$member['mb_nick']?> <? if($member['mb_birth']) { ?>( <?=$member['mb_birth']?> 년생 )<? } ?>
 				</td>
 			</tr>
 			<tr>
 				<th>E-mail</th>
 				<td>
-					<?=$member[mb_email]?>
+					<?=$member['mb_email']?>
 				</td>
 			</tr>
 			<tr>
 				<th>가입일</th>
 				<td>
-					<?=$member[mb_open_date]?>
+					<?=$member['mb_open_date']?>
 				</td>
 			</tr>
 <? if($member['mb_error_cnt'] > 0) { ?>
@@ -82,34 +82,24 @@ include_once('./_head.php');
 	if(!$page) $page= 1;
 	
 	// 알람 내역을 가져온다
-	$row = sql_fetch("select count(*) as cnt from {$g5['call_table']} where re_mb_id = '{$member[mb_id]}'");
+	$row = sql_fetch("select count(*) as cnt from {$g5['call_table']} where re_mb_id = '{$member['mb_id']}'");
 	$total_count = $row['cnt'];
 	$page_rows = 10;
 
 	$total_page  = ceil($total_count / $page_rows);  // 전체 페이지 계산
 	$from_record = ($page - 1) * $page_rows; // 시작 열을 구함
 
-	$sql = " select * from {$g5['call_table']} where re_mb_id = '{$member[mb_id]}' order by bc_datetime desc limit {$from_record}, $page_rows ";
+	$sql = " select * from {$g5['call_table']} where re_mb_id = '{$member['mb_id']}' order by bc_datetime desc limit {$from_record}, $page_rows ";
 	$result = sql_query($sql);
 
-	for($i = 0; $row = sql_fetch_array($result); $i++) {
-		// 190603 ncoding 일반 게시판 호출 링크 변경
-		$skin = sql_fetch("select bo_type from {$g5['board_table']} as b {$g5['call_table']} as c where b.bo_table = c.bo_table'");
-		if($skin['bo_type'] == 'mmb') {
-			$type = 'log';
-			$link = $row['wr_num'] * -1;
-		}
-		else {
-			$type = 'wr_id';
-			$link = $row['wr_id'];
-		}
+	for($i = 0; $row = sql_fetch_array($result); $i++) { 
 ?>
 
 			<tr <?=!$row['bc_check'] ? "class='check'":""?>>
 				<td><?=$row['mb_name']?></td>
 				<td>
 					<p style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">
-						<a href="<?=G5_BBS_URL?>/board.php?bo_table=<?=$row['bo_table']?>&amp;<?=$type?>=<?=$link?>"><?=$row['memo']?></a>
+						<a href="<?=G5_BBS_URL?>/board.php?bo_table=<?=$row['bo_table']?>&amp;log=<?=$row['wr_num'] * -1?>"><?=$row['memo']?></a>
 					</p>
 				</td>
 			</tr>

@@ -268,7 +268,7 @@ body	{ height: 100%; }
 
 #container	{ padding: 25px; }
 #fsearch input	{ margin: 0; }
-#fsearch .btn_submit,.input .btn_submit{
+#fsearch .btn_submit 	{
 	border: none;
 	background: #29c7c9;
 	color: #fff;
@@ -277,15 +277,4 @@ body	{ height: 100%; }
 	height: 28px;
 	cursor: pointer;
 	line-height: 1.0em;
-}
-
-.input .btn_submit {
-	width:auto;
-	padding:0 15px;
-	display:inline-block;
-	text-align:center;
-	line-height:28px;
-}
-.input .add_item{
-	width:30px;
 }

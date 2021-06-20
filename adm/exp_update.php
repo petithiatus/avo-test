@@ -24,7 +24,7 @@ if($take_type == 'A') {
 	for($i=0; $ch = sql_fetch_array($result); $i++) { 
 		if (($ex_point < 0) && ($ex_point * (-1) > $ch['ch_exp'])) continue;
 		
-		insert_exp($ch['ch_id'], $ex_point, "[정산]".$ex_content, $action);
+		insert_exp($ch['ch_id'], $ex_point, $ex_content, $action);
 	}
 
 } else {
@@ -42,7 +42,7 @@ if($take_type == 'A') {
 	if (($ex_point < 0) && ($ex_point * (-1) > $ch['ch_exp']))
 		alert('경험치를 차감하는 경우 현재 경험치보다 작으면 안됩니다.');
 
-	insert_exp($ch['ch_id'], $ex_point, "[정산]".$ex_content, $action);
+	insert_exp($ch['ch_id'], $ex_point, $ex_content, $action);
 }
 
 goto_url('./exp_list.php?'.$qstr);

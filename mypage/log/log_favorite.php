@@ -85,7 +85,7 @@ $write_pages = get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['c
 			<? for ($i=0; $i<count($list); $i++) {
 				$bo_subject = cut_str($list[$i]['bo_subject'], 20);
 				$ca_name = $list[$i]['ca_name'];
-				if($list[$i]['wr_type'] == 'UPLOAD') {
+				if($list[$i]['wr_type'] == 'UPLOAD') { 
 					// Upload 형태로 로그를 등록 하였을 때
 					$thumb = get_list_thumbnail($list[$i]['bo_table'], $list[$i]['wr_id'], 150, 150);
 					$image_url = $thumb['src'];
@@ -99,7 +99,7 @@ $write_pages = get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['c
 				}
 				$list[$i]['log_num'] = $list[$i]['wr_num'] * -1;
 
-				if($list[$i]['subject'] == '--|UPLOADING|--') {
+				if($list[$i]['subject'] == '--|UPLOADING|--') { 
 					$log_name = '???';
 				} else {
 					if($list[$i]['wr_noname']) {
@@ -117,7 +117,7 @@ $write_pages = get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['c
 					</a>
 				</dt>
 				<dd>
-					[<?=$list[$i]['log_num']?>] <?=$log_name?>
+					<?=$log_name?>
 				</dd>
 			</dl>
 			<? } if($i==0) { ?>

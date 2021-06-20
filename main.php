@@ -10,9 +10,9 @@ include_once(G5_PATH."/intro.php");
 
 <?
 $main_content = get_site_content('site_main');
-if($main_content) {
+if($main_content) { 
 	echo $main_content;
-} else {
+} else { 
 ?>
 	<div id="no_design_main">
 		<div id="main_visual_box">
@@ -39,14 +39,14 @@ if($main_content) {
 		</div>
 
 		<div id="main_copyright_box" class="theme-box txt-center">
-			COPYRIGHT &copy; 2021 by 
+			COPYRIGHT &copy; 2017 by Avocado
 		</div>
 	</div>
 <?php } ?>
 </div>
 
 <script>
-$(function() {
+$(function() { 
 	window.onload = function() {
 		$('#body').css('opacity', 1);
 	};
