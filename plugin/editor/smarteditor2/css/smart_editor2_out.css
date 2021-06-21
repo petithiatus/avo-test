@@ -10,3 +10,29 @@
 .se2_outputarea ul ul li{list-style-type:circle}
 .se2_outputarea ul ul ul li{list-style-type:square}
 .se2_outputarea img,.se2_outputarea fieldset{border:0}
+
+
+/* add font */
+
+/* 빛의 계승자체 */
+@font-face {
+    font-family: 'HeirofLightRegular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/HeirofLightRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'HeirofLightBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/HeirofLightBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;}
+
+/* 이롭게 바탕체 */
+@font-face {
+  src: url('//cdn.jsdelivr.net/font-iropke-batang/1.2/font-iropke-batang.css');
+  font-family: '이롭게 바탕체';}
+
+/*스포카 한 산스*/
+  @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+  <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+  .spoka * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }

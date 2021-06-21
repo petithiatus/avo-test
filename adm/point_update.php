@@ -23,7 +23,7 @@ if($take_type == 'A') {
 		if (($po_point < 0) && ($po_point * (-1) > $mb['mb_point']))
 		alert('소지금를 깎는 경우 현재 소지금보다 작으면 안됩니다.', './point_list.php?'.$qstr);
 
-		insert_point($mb['mb_id'], $po_point, $po_content, '@passive', $mb['mb_id'], $member['mb_id'].'-'.uniqid(''), $expire);
+		insert_point($mb['mb_id'], $po_point, "[정산]".$po_content, '@passive', $mb['mb_id'], $member['mb_id'].'-'.uniqid(''), $expire);
 	}
 } else {
 	// 개별지급
@@ -40,7 +40,7 @@ if($take_type == 'A') {
 	if (($po_point < 0) && ($po_point * (-1) > $mb['mb_point']))
 		alert('소지금를 깎는 경우 현재 소지금보다 작으면 안됩니다.', './point_list.php?'.$qstr);
 
-	insert_point($mb['mb_id'], $po_point, $po_content, '@passive', $mb['mb_id'], $member['mb_id'].'-'.uniqid(''), $expire);
+	insert_point($mb['mb_id'], $po_point, "[정산]".$po_content, '@passive', $mb['mb_id'], $member['mb_id'].'-'.uniqid(''), $expire);
 }
 
 

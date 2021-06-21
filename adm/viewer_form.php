@@ -253,4 +253,3 @@ function fviewerform_submit(f)
 <?php
 include_once ('./admin.tail.php');
 ?>
-
