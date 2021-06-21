@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* SIR 지운아빠 */
+
+#bo_list .theme-list td {color: #ccc;}
+
+#bo_list table{border-spacing:1px;border-collapse:separate;}
+#bo_list .theme-list th.week {background-color: #fcfcfc;
+                              color:#aaa;}
+#bo_list .theme-list th.sat{background-color:#bfcdf8;}
+#bo_list .theme-list th.sun{background-color:#f8d0bf;}
+#bo_list .theme-list td {text-align:center;height:80px;padding:5px 0;}
+#bo_list .theme-list td.days{}
+#bo_list .theme-list td.days a{color:#ccc;}
+#bo_list .theme-list td.today{background-color:rgba(244, 244, 188, 0.4);}
+#bo_list .theme-list td.noday{background-color:rgba(224, 224, 224, 0.4);}
+.cal-nav td{text-align:center;vertical-align:middle;}
+.cal-nav h2{text-align:center;}
+.cal-nav h2 a:before,.cal-nav h2 a:after{content:"◈";font-style:normal;font-size:15px;padding:0 20px;}
+.cal-nav .ico{position:relative;display:inline-block;width:20px;height:20px;overflow:hidden;text-indent:100%;white-space:nowrap;}
+.cal-nav .ico:before{position:absolute;left:0;top:0;display:inline-block;width:20px;height:28px;line-height:28px;font-family:'icon';text-indent:0;}
+.cal-nav .ico.prevyr:before{content:"\ea21";}
+.cal-nav .ico.prevmth:before{content:"\ea23";}
+.cal-nav .ico.nextyr:before{content:"\ea22";}
+.cal-nav .ico.nextmth:before{content:"\ea24";}
+
+ /* 스케줄 */
+#bo_list .popup_layer {position:absolute; display:none; width:200px; padding:10px; background-color:#f0f0f0; z-index:2;text-align:center;}
+#bo_list .popup_layer .popup_title{padding-bottom:5px; }
+#bo_list .popup_layer .popup_cont{font-size:13px;}
+#today_schedule {text-align:left; }
+#today_schedule p.ui-btn.point{margin-bottom:10px;}
+#today_schedule .ico{display:inline-block;width:20px;height:20px;vertical-align:middle;}
+
+/* 게시판 목록 */
+#bo_list .td_board {width:120px;text-align:center}
+#bo_list .td_chk {width:30px;text-align:center}
+#bo_list .td_date {width:60px;text-align:center}
+#bo_list .td_datetime {width:110px;text-align:center}
+#bo_list .td_group {width:100px;text-align:center}
+#bo_list .td_mb_id {width:100px;text-align:center}
+#bo_list .td_mng {width:80px;text-align:center}
+#bo_list .td_name {width:100px;text-align:left}
+#bo_list .td_nick {width:100px;text-align:center}
+#bo_list .td_num {width:50px;text-align:center}
+#bo_list .td_numbig {width:80px;text-align:center}
+
+
+#bo_cate h2 {position:absolute;font-size:0;line-height:0;overflow:hidden}
+#bo_cate ul {margin-bottom:10px;padding-left:1px;zoom:1}
+#bo_cate ul:after {display:block;visibility:hidden;clear:both;content:""}
+#bo_cate li {float:left;margin-bottom:-1px}
+#bo_cate a {display:block;position:relative;margin-left:-1px;padding:6px 0 5px;width:90px;border:1px solid #ddd;background:#f7f7f7;color:#888;text-align:center;letter-spacing:-0.1em;line-height:1.2em;cursor:pointer}
+#bo_cate a:focus, #bo_cate a:hover, #bo_cate a:active {text-decoration:none}
+#bo_cate #bo_cate_on {z-index:2;border:1px solid #565e60;background:#fff;color:#565e60;font-weight:bold}
+
+.td_subject img {margin-left:3px}
+
+/* 게시판 목록 공통 */
+.bo_fx {margin-bottom:5px;zoom:1}
+.bo_fx:after {display:block;visibility:hidden;clear:both;content:""}
+.bo_fx ul {margin:0;padding:0;list-style:none}
+#bo_list_total {float:left;padding-top:5px}
+.btn_bo_user {float:right;margin:0;padding:0;list-style:none}
+.btn_bo_user li {float:left;margin-left:5px;margin-bottom:3px}
+.btn_bo_adm {float:left}
+.btn_bo_adm li {float:left;margin-right:5px}
+.btn_bo_adm input {padding:8px;border:0;background:#e8180c;color:#ddd;text-decoration:none;vertical-align:middle}
+.bo_notice td {background:#8AA989}
+.bo_notice td a {font-weight:bold}
+.td_num strong {color:#000}
+.bo_cate_link {display:inline-block;margin:0 3px 0 0;padding:0 6px 0 0;border-right:1px solid #e7f1ed;color:#999 !important;font-weight:bold;text-decoration:none} /* 글제목줄 분류스타일 */
+.bo_current {color:#8AA989}
+#bo_list .cnt_cmt {display:inline-block;margin:0 0 0 3px;font-weight:bold}
+
+#bo_sch {margin-bottom:10px;padding-top:5px;text-align:center}
+#bo_sch legend {position:absolute;margin:0;padding:0;font-size:0;line-height:0;text-indent:-9999em;overflow:hidden}
+
+
+/* 게시판 읽기 */
+#bo_v {margin-bottom:20px;padding-bottom:20px}
+
+#bo_v_table {position:absolute;top:0;right:16px;margin:0;padding:0 5px;height:25px;background:#dbc7ff;color:#ccc;font-weight:bold;line-height:2.2em}
+
+#bo_v_title {padding:10px 0;font-size:1.2em}
+
+#bo_v_link h2 {position:absolute;font-size:0;line-height:0;overflow:hidden}
+
+#bo_v_top {margin:0 0 10px;padding:10px 0;zoom:1}
+#bo_v_top:after {display:block;visibility:hidden;clear:both;content:""}
+#bo_v_top h2 {position:absolute;font-size:0;line-height:0;overflow:hidden}
+#bo_v_top ul {margin:0;padding:0;list-style:none}
+
+#bo_v_bot {zoom:1}
+#bo_v_bot:after {display:block;visibility:hidden;clear:both;content:""}
+#bo_v_bot h2 {position:absolute;font-size:0;line-height:0;overflow:hidden}
+#bo_v_bot ul {margin:0;padding:0;list-style:none}
+
+.bo_v_nb {float:left}
+.bo_v_nb li {float:left;margin-right:5px}
+.bo_v_com {float:right}
+.bo_v_com li {float:left;margin-left:5px}
+
+#bo_v_atc_title {position:absolute;font-size:0;line-height:0;overflow:hidden}
+
+#bo_v_img {margin:0 0 10px;width:100%;overflow:hidden;zoom:1}
+#bo_v_img:after {display:block;visibility:hidden;clear:both;content:""}
+#bo_v_img img {margin-bottom:20px;max-width:100%;height:auto}
+
+#bo_v_con {margin-bottom:5px;width:100%;line-height:1.7em;word-break:break-all;overflow:hidden}
+#bo_v_con img {max-width:100%;height:auto}
+
+.subject a{display:block;}
+
+#bo_w .ico{display:inline-block;padding:5px 10px;}
+#bo_w .ico:before{padding-left:3px;}
+
+/*표시색상*/
+.color_1{background:rgba(255, 195, 0, 0.4);}
+.color_2{background:rgba(123, 104, 238, 0.4);}
+.color_3{background:rgba(32, 178, 170, 0.4);}
+.color_4{background:rgba(199, 0, 57, 0.4);}
+
+#bo_w .ico.color_1:before{content:"모임";}
+#bo_w .ico.color_2:before{content:"이벤트";}
+#bo_w .ico.color_3:before{content:"프로젝트";}
+#bo_w .ico.color_4:before{content:"운영";}

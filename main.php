@@ -10,9 +10,9 @@ include_once(G5_PATH."/intro.php");
 
 <?
 $main_content = get_site_content('site_main');
-if($main_content) { 
+if($main_content) {
 	echo $main_content;
-} else { 
+} else {
 ?>
 	<div id="no_design_main">
 		<div id="main_visual_box">
@@ -20,33 +20,31 @@ if($main_content) {
 		</div>
 
 		<div id="main_twitter_box" class="theme-box">
-			<? include(G5_PATH."/templete/txt.twitter.php"); ?>
+			<!--<? include(G5_PATH."/templete/txt.twitter.php"); ?>-->
 		</div>
-
 		<div id="main_image_box" class="theme-box">
-			<img src="<?=G5_IMG_URL?>/temp_main_image.png" alt="임시 메인 이미지" />
+			<!--<img src="<?=G5_IMG_URL?>/temp_main_image.png" alt="임시 메인 이미지" />-->
+			<?=latest( 'schedule', 'schedule', 31 );?>
 		</div>
-
 		<div id="main_side_box">
 			<div id="main_login_box" class="theme-box">
 				<? include(G5_PATH."/templete/txt.outlogin.php"); ?>
 			</div>
-			<div id="main_banner_box" class="theme-box">
+			<!--<div id="main_banner_box" class="theme-box">
 				<img src="<?=G5_URL?>/adm/img/logo.png" alt="임시 메인 배너이미지" />
 				<p>AVOCADO EDITION</p>
 				<p><a href="http://bytheallspark.cafe24.com/" target="_blank">http://bytheallspark.cafe24.com/</a></p>
-			</div>
+			</div>-->
 		</div>
-
-		<div id="main_copyright_box" class="theme-box txt-center">
-			COPYRIGHT &copy; 2017 by Avocado
-		</div>
+		<!--<div id="main_copyright_box" class="theme-box txt-center">
+			COPYRIGHT since 2021 &copy; 장외규격
+		</div> -->
 	</div>
 <?php } ?>
 </div>
 
 <script>
-$(function() { 
+$(function() {
 	window.onload = function() {
 		$('#body').css('opacity', 1);
 	};

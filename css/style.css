@@ -22,7 +22,16 @@ button, input, form, textarea, select, .ui-btn, .form-input {border-radius: 4px;
 #gnb {font-family: 'HSBombaram3_Regular';}
 #gnb :hover, a:hover {opacity: .4);}
 
-
+/* 하단 박스 */
+#main_copyright_box	{
+	display: block;
+	position: fixed;
+	width: 100%;
+	bottom:0px;
+	clear: both;
+	text-align: center;
+	background-color: rgba(244, 224, 144, .7);
+}
 
 button	{ font-size: 12px; font-family: 'Nanum Gothic';}
 /*#body	{ padding-bottom: 200px; }*/
@@ -870,10 +879,10 @@ th, td	{
 
 
 
-#goto_top	{ position: absolute; right: 10px; bottom: 50px; z-index: 50; }
+#goto_top	{ position: absolute; right: 10px; bottom: 20px; z-index: 50; }
 
 @media all and (max-width: 1000px) {
-	#goto_top	{ bottom: 50px; }
+	#goto_top	{ bottom: 20px; }
 }
 
 

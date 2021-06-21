@@ -29,8 +29,8 @@ for ($index=0; $index<count($comment); $index++) {
 	}
 ?>
 
-
-<div class="theme-box" id="c_<?php echo $comment_id ?>">
+<hr class="line">
+<div class="comment_box" id="c_<?php echo $comment_id ?>">
 	<div class="co-content">
 		<div class="original_comment_area">
 			<?
@@ -45,6 +45,8 @@ for ($index=0; $index<count($comment); $index++) {
 					}
 				} else { 
 					// 코멘트 출력 부분
+					if($log_comment['wr_1'])echo '<div class="calculated">[지급내역]<br>'.nl2br($log_comment['wr_1']).'</div>'; //정산 지급내역 출력
+					if($log_comment['wr_2'])echo '<div class="calculated error">'.nl2br($log_comment['wr_2']).'</div>'; // 정산 오류 메시지 출력
 					$log_comment['content'] = autolink($log_comment['content'], $bo_table, $stx); // 자동 링크 및 해시태그, 로그 링크 등 컨트롤 함수
 					echo $log_comment['content'];
 				}
@@ -52,6 +54,8 @@ for ($index=0; $index<count($comment); $index++) {
 		</div>
 		<? if($log_comment['is_edit']) { ?>
 		<div class="modify_area" id="save_comment_<?php echo $comment_id ?>">
+			<input id="save_co_<?=$comment_id?>" type="hidden" name="wr_1" value="<?=$log_comment['wr_1']?>">
+			<input id="save_state_<?=$comment_id?>" type="hidden" name="state" value="<?=$data['wr_10']?>">
 			<textarea id="save_co_comment_<?php echo $comment_id ?>"><?php echo get_text($log_comment['content1'], 0) ?></textarea>
 			<button type="button" class="mod_comment ui-btn" onclick="modify_commnet('<?php echo $comment_id ?>'); return false;">수정</button>
 		</div>

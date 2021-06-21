@@ -5,7 +5,6 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 	</div>
 </section>
 
-
 <a href="#header" id="goto_top" class="scroll-fix">
 	<img src="<?=G5_IMG_URL?>/btn_top.png" />
 </a>
@@ -18,12 +17,15 @@ $('#goto_top').click(function () {
 });
 </script>
 
+<div id="main_copyright_box" class="theme-box txt-center">
+	COPYRIGHT since 2021 &copy; 장외규격
+</div>
 
 <script src="<?php echo G5_JS_URL ?>/jquery.flexslider.js"></script>
 <script src="<?php echo G5_JS_URL ?>/_custom.js"></script>
 
 <?
-if($is_member) { 
+if($is_member) {
 	include_once(G5_PATH."/ajax/memo_call.php");
 	include_once(G5_PATH."/ajax/board_call.php");
 }

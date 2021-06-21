@@ -37,7 +37,7 @@ if($take_type == 'A') {
 						set ch_id = '{$ch['ch_id']}',
 							ch_name = '{$ch['ch_name']}',
 							ti_id = '{$ti['ti_id']}',
-							hi_use = '1'";
+							hi_use = '2'";
 			sql_query($sql);
 		}
 	}
@@ -61,7 +61,7 @@ if($take_type == 'A') {
 					set ch_id = '{$ch['ch_id']}',
 						ch_name = '{$ch['ch_name']}',
 						ti_id = '{$ti['ti_id']}',
-						hi_use = '1'";
+						hi_use = '2'";
 		sql_query($sql);
 	}
 
