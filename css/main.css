@@ -5,6 +5,7 @@
 #main_side_box, #main_login_box, #main_twitter_box, #main_copyright_box {border-radius: 4px;}
 #main_banner_box, #main_visual_box, #main_image_box {border-radius: 8px;}
 
+
 #no_design_main	{
 	position: relative;
 	padding: 50px 0;
@@ -20,12 +21,17 @@
 	min-height: 100px;
 	background: rgba(244, 224, 144, .4);
 	margin-bottom: 20px;
+	max-width: 1000px;
+	max-height: 300px;
 }
+/* @media screen only (max-width:767px) {width: 100%;} */ /*미디어쿼리적용못함 ㅠㅠ*/
 
 #main_twitter_box	{
 	position: relative;
 	width: 32%;
-	height: 260px;
+	height: auto;
+	min-width: 250px;
+	max-height: 200px;
 	float: left;
 	margin-bottom: 20px;
 }
@@ -34,30 +40,38 @@
 #main_image_box	{
 	position: relative;
 	width: 32%;
+	min-width: 255px;
 	margin-left: 2%;
 	margin-right: 2%;
-	height: 260px;
+	height: auto;
 	text-align: center;
-	line-height: 260px;
+	line-height: 1.4em;
 	float: left;
 	margin-bottom: 20px;
+	border-radius: 5px;
 }
+
+#main_image_box h1, h2, h3 {text-align: center;}
 
 #main_side_box	{
 	position: relative;
 	width: 32%;
+	min-width: 255px;
 	height: 260px;
 	float: right;
 	margin-bottom: 20px;
 }
 
-#main_login_box	{ margin-bottom: 20px; }
+#main_login_box	{ margin-bottom: 10px;}
+
 #main_banner_box	{
-	padding: 20px;
-	height: 130px;
+	padding: 5 10 10 10px;
+	height: 100px;
 	text-align: center;
 	box-sizing: border-box;
+	color: #aaa;
 }
+#main_banner_box :link {color: #a1a1a1;}
 
 /*
 #main_copyright_box	{
