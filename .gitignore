@@ -2,3 +2,14 @@
 .DS_Store
 plugin/editor/ckeditor5/.DS_Store
 skin/board/n_basic-master/.DS_Store
+adm/.DS_Store
+css/.DS_Store
+mypage/.DS_Store
+plugin/.DS_Store
+plugin/editor/.DS_Store
+plugin/kcaptcha/.DS_Store
+plugin/PHPMailer/.DS_Store
+plugin/sns/.DS_Store
+skin/.DS_Store
+skin/board/.DS_Store
+skin/latest/.DS_Store
