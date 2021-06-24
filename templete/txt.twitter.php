@@ -1,6 +1,6 @@
 <? if($config['cf_twitter']) { ?>
 <div class="twitter">
-	<a class="twitter-timeline" href="https://twitter.com/<?=$config['cf_twitter']?>">-</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<a class="twitter-timeline" href="https://twitter.com/<?=$config['cf_twitter']?>">알림용 트위터</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 <? } ?>
 

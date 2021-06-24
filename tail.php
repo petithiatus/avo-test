@@ -18,7 +18,7 @@ $('#goto_top').click(function () {
 </script>
 
 <div id="main_copyright_box" class="theme-box txt-center">
-	COPYRIGHT since 2021 &copy; 장외규격
+	COPYRIGHT since 2021 &copy; 장외규격 all rights reserved.
 </div>
 
 <script src="<?php echo G5_JS_URL ?>/jquery.flexslider.js"></script>

@@ -33,25 +33,25 @@ if($logo_data)	$logo_data.= " />";
 
 		<!-- 모바일 모드에서 메뉴를 열고 닫기 할 수 있는 버튼 -->
 		<a href="#gnb" id="gnb_control_box">
-			<img src="<?=G5_IMG_URL?>/ico_menu_control_pannel.png" alt="메뉴열고닫기" />
+			 &#9776; <!--<img src="<?=G5_IMG_URL?>/ico_menu_control_pannel.png" alt="메뉴열고닫기" />-->
 		</a>
 		<script>
 		$('#gnb_control_box').on('click', function() {
 			$('body').toggleClass('open-gnb');
 			return false;
 		});
-		</script>
+		</script></sdiv>
 		<!-- 모바일 메뉴 열고 닫기 버튼 종료 -->
 
 
 		<div id="gnb">
 			<?
 			$menu_content = get_site_content('site_menu');
-			if($menu_content) { 
+			if($menu_content) {
 				echo $menu_content;
-			} else { 
+			} else {
 			?>
-			
+
 				<ul id="no_design_gnb">
 					<li>
 						<a href="<?=G5_URL?>/member">

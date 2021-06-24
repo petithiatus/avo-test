@@ -1,1 +1,7 @@
 @charset "utf-8";
+.cc-title {margin-top: 2.4em;
+          margin-left: 1.4em;
+          margin-bottom: 1em;
+          line-height: 2.4em;
+          color: #848484;}
+.cc-title h2 {color: #dcb527; font-size: 2em;}

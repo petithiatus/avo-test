@@ -20,21 +20,24 @@ if($main_content) {
 		</div>
 
 		<div id="main_twitter_box" class="theme-box">
-			<!--<? include(G5_PATH."/templete/txt.twitter.php"); ?>-->
+			<? include(G5_PATH."/templete/txt.twitter.php"); ?>
 		</div>
 		<div id="main_image_box" class="theme-box">
 			<!--<img src="<?=G5_IMG_URL?>/temp_main_image.png" alt="임시 메인 이미지" />-->
-			<?=latest( 'schedule', 'schedule', 31 );?>
+			<br><p><span><h3>이달의 일정</h3></span></p><br>
+			<span><b>0기 신청기간</b> ◆&nbsp; 6. 25(금) ~ 6. 30(수)</span>
 		</div>
 		<div id="main_side_box">
 			<div id="main_login_box" class="theme-box">
 				<? include(G5_PATH."/templete/txt.outlogin.php"); ?>
 			</div>
-			<!--<div id="main_banner_box" class="theme-box">
-				<img src="<?=G5_URL?>/adm/img/logo.png" alt="임시 메인 배너이미지" />
+			<div id="main_banner_box" class="theme-box">
+				<p>장외규격</p>
+				<p><a href="mailto:admin@outsidestandard.xyz?subject=feedback">메일로 연락하기</a></p>
+				<!--<img src="<?=G5_URL?>/adm/img/logo.png" alt="임시 메인 배너이미지" />
 				<p>AVOCADO EDITION</p>
-				<p><a href="http://bytheallspark.cafe24.com/" target="_blank">http://bytheallspark.cafe24.com/</a></p>
-			</div>-->
+				<p><a href="http://bytheallspark.cafe24.com/" target="_blank">http://bytheallspark.cafe24.com/</a></p>-->
+			</div>
 		</div>
 		<!--<div id="main_copyright_box" class="theme-box txt-center">
 			COPYRIGHT since 2021 &copy; 장외규격

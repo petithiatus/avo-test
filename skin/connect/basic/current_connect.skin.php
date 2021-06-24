@@ -5,6 +5,10 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 add_stylesheet('<link rel="stylesheet" href="'.$connect_skin_url.'/style.css">', 0);
 ?>
 
+<div class="cc-title"><p><h2>현재 접속자 목록</h2></p>
+  <p>최근 5분간 접속한 방문자가 표시됩니다.</p>
+</div>
+
 <!-- 현재접속자 목록 시작 { -->
 <div class="tbl_head01 tbl_wrap">
     <table id="current_connect_tbl" class="theme-list">
