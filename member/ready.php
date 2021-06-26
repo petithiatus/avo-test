@@ -17,7 +17,7 @@ for($i = 0; $row = sql_fetch_array($ar_result); $i++) {
 if($config['cf_side_title']) {
 	$ch_si = array();
 	$side_result = sql_query("select si_id, si_name from {$g5['side_table']} where si_auth < 3  order by si_id asc");
-	for($i=0; $row = sql_fetch_array($side_result); $i++) { 
+	for($i=0; $row = sql_fetch_array($side_result); $i++) {
 		$ch_si[$i]['name'] = $row['si_name'];
 		$ch_si[$i]['id'] = $row['si_id'];
 	}
@@ -27,7 +27,7 @@ if($config['cf_side_title']) {
 if($config['cf_class_title']) {
 	$ch_cl = array();
 	$class_result = sql_query("select cl_id, cl_name from {$g5['class_table']} where cl_auth < 3 order by cl_id asc");
-	for($i=0; $row = sql_fetch_array($class_result); $i++) { 
+	for($i=0; $row = sql_fetch_array($class_result); $i++) {
 		$ch_cl[$i]['name'] = $row['cl_name'];
 		$ch_cl[$i]['id'] = $row['cl_id'];
 	}
@@ -40,41 +40,41 @@ if($stx) {
 		// 추가 필드 검색
 		$search_arcode = true;
 		$sql_common = "from {$g5['character_table']} ch join {$g5['value_table']} cv on ch.ch_id = cv.ch_id where (ch.ch_state = '대기' OR ch.ch_state = '수정중'  OR ch.ch_state != '삭제') and cv.av_value like '%{$stx}%' and cv.ar_code = '{$check_sfl[1]}' ";
-		if($s_class) { 
+		if($s_class) {
 			$sql_search .= "and ch.ch_class = '{$s_class}'";
 		}
 
-		if($s_side) { 
+		if($s_side) {
 			$sql_search .= "and ch.ch_side = '{$s_side}'";
 		}
 
 		$sql_order = "order by ch.ch_id desc ";
 	}
 }
-if(!$search_arcode) { 
+if(!$search_arcode) {
 	$sql_common = "from {$g5['character_table']} where ch_state != '승인' and ch_state != '삭제' ";
-	if($s_class) { 
+	if($s_class) {
 		$sql_search .= "and ch_class = '{$s_class}'";
 	}
 
-	if($s_side) { 
+	if($s_side) {
 		$sql_search .= "and ch_side = '{$s_side}'";
 	}
 
-	if($stx) { 
+	if($stx) {
 		if($sfl == 'mb_nick') {
 			$temp_search = "";
 			$connect_str = "";
 
 			$temp = sql_query("select mb_id from {$g5['member_table']} where mb_nick like '%".$stx."%'");
-			for($t = 0; $row = sql_fetch_array($temp); $t++) { 
+			for($t = 0; $row = sql_fetch_array($temp); $t++) {
 				$temp_search .= $connect_str."mb_id = '".$row['mb_id']."'";
 				$connect_str = " OR ";
 			}
-			
-			if($temp_search) 
+
+			if($temp_search)
 				$sql_search .= "and ( ".$temp_search." ) ";
-			else 
+			else
 				$sql_search .= "and ( mb_id = '' ) ";
 		} else {
 			$sql_search .= " and $sfl like '%".$stx."%' ";
@@ -105,10 +105,10 @@ $write_pages = get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['c
 $side_link = "<li class='menu-first'><a href='".G5_URL."/member/ready.php'><span>ALL({$all_count})</span></a></li>";
 
 
-for($i=0; $i < count($ch_si); $i++) { 
-	if($s_side == $ch_si[$i]['id']) { 
+for($i=0; $i < count($ch_si); $i++) {
+	if($s_side == $ch_si[$i]['id']) {
 		$class = "  style='color: rgb(255, 213, 0);'  ";
-	} else { 
+	} else {
 		$class = "";
 	}
 
@@ -119,13 +119,13 @@ for($i=0; $i < count($ch_si); $i++) {
 				<span style='font-size:11px;font-family:\"Dotum\";letter-spacing: -1px;'>".$ch_si[$i]['name']." ".$ch_cl[$j]['name']."({$count['cnt']})</span>
 			</a>";
 
-	if(count($ch_cl) > 0) { 
+	if(count($ch_cl) > 0) {
 		$side_link .= "<ul>";
 
-		for($k=0; $k < count($ch_cl); $k++) { 
-			if($s_class == $ch_cl[$k]['id'] && $s_side == $ch_si[$i]['id']) { 
+		for($k=0; $k < count($ch_cl); $k++) {
+			if($s_class == $ch_cl[$k]['id'] && $s_side == $ch_si[$i]['id']) {
 				$class = "  style='color: rgb(255, 213, 0);'  ";
-			} else { 
+			} else {
 				$class = "";
 			}
 
@@ -136,7 +136,7 @@ for($i=0; $i < count($ch_si); $i++) {
 				</a>
 			</li>";
 		}
-		
+
 		$side_link .= "</ul>";
 	}
 	$side_link .= "</li>";
@@ -161,8 +161,8 @@ for($i=0; $i < count($ch_si); $i++) {
 					<select name="sfl">
 						<option value="mb_nick" <?=$sfl == 'mb_nick' ? "selected" : ""?>>오너명</option>
 						<option value="ch_name" <?=$sfl == 'ch_name' ? "selected" : ""?>>캐릭명</option>
-					<? if(count($ch_ar) > 0) { 
-						for($i=0; $i < count($ch_ar); $i++) { 
+					<? if(count($ch_ar) > 0) {
+						for($i=0; $i < count($ch_ar); $i++) {
 					?>
 						<option value="arcode||<?=$ch_ar[$i]['ar_code']?>" <?=$sfl == 'arcode||'.$ch_ar[$i]['ar_code'] ? "selected" : ""?>><?=$ch_ar[$i]['ar_name']?></option>
 					<? } } ?>
@@ -206,7 +206,7 @@ for($i=0; $i < count($ch_si); $i++) {
 							if($config['cf_side_title']) {
 								echo get_side_name($row['ch_side']);
 							}
-							if($config['cf_class_title']) { 
+							if($config['cf_class_title']) {
 								if($config['cf_side_title']) { echo " / "; }
 								echo get_class_name($row['ch_class']);
 							}
@@ -222,7 +222,7 @@ for($i=0; $i < count($ch_si); $i++) {
 
 <?
 	}
-	if($i == 0) { 
+	if($i == 0) {
 		echo "<li class='empty'>대기자가 없습니다.</li>";
 	}
 	unset($rank_result);
@@ -232,7 +232,7 @@ for($i=0; $i < count($ch_si); $i++) {
 
 	<? if($is_add_character && ($i == 0 || $i < $config['cf_character_count'])) { ?>
 	<div class="txt-center">
-		<a href="<?=G5_URL?>/mypage/character/character_form.php" class="ui-btn point">신규 캐릭터 등록</a>
+		<a href="<?=G5_URL?>/mypage/character/character_form.php" class="ui-btn point">신규 신청서 등록</a>
 	</div><?}?>
 
 	<div class="ui-page">
@@ -244,4 +244,3 @@ for($i=0; $i < count($ch_si); $i++) {
 <?php
 include_once('./_tail.php');
 ?>
-

@@ -4,7 +4,7 @@ include_once('./_head.php');
 
 $ch_array = array();
 $character_result = sql_query("select * from {$g5['character_table']} where mb_id = '{$member['mb_id']}' and ch_state != '삭제'");
-for($i=0; $row = sql_fetch_array($character_result); $i++) { 
+for($i=0; $row = sql_fetch_array($character_result); $i++) {
 	$ch_array[$i] = $row;
 }
 ?>
@@ -16,13 +16,13 @@ for($i=0; $row = sql_fetch_array($character_result); $i++) {
 		</colgroup>
 		<tbody>
 			<tr>
-				<th>대표캐릭터</th>
+				<th>신청서</th>
 				<td>
 					<form name="frm_main_character" action="./maincharacter_update.php" method="post">
 						<input type="hidden" name="mb_id" value="<?=$member['mb_id']?>" />
 						<input type="hidden" name="return_url" value="character" />
 						<select name="ch_id" id="ch_id">
-							<option value="">대표캐릭터 선택</option>
+							<option value="">신청서 선택</option>
 					<?	for($i = 0; $i < count($ch_array); $i++) { $ch = $ch_array[$i]; ?>
 							<option value="<?=$ch['ch_id']?>" <?=$member['ch_id'] == $ch['ch_id'] ? "selected" : ""?>>
 								<?=$ch['ch_name']?>
@@ -73,13 +73,13 @@ for($i=0; $row = sql_fetch_array($character_result); $i++) {
 					<? if($ad['ad_use_rank']) { ?>
 					<p>
 						<strong class="txt-point"><?=$config['cf_rank_name']?></strong>
-						<?php echo get_rank_name($ch['ch_rank']) ?> 
+						<?php echo get_rank_name($ch['ch_rank']) ?>
 					</p>
 					<? } ?>
 					<? if($ad['ad_use_exp']) { ?>
 					<p>
 						<strong class="txt-point"><?=$config['cf_exp_name']?></strong>
-						<?php echo $ch['ch_exp'].$config['cf_exp_pice'] ?> 
+						<?php echo $ch['ch_exp'].$config['cf_exp_pice'] ?>
 					</p>
 					<? } ?>
 					<? if($config['cf_side_title']) { ?>

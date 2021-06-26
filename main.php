@@ -24,8 +24,6 @@ if($main_content) {
 		</div>
 		<div id="main_image_box" class="theme-box">
 			<!--<img src="<?=G5_IMG_URL?>/temp_main_image.png" alt="임시 메인 이미지" />-->
-			<br><p><span><h3>이달의 일정</h3></span></p><br>
-			<span><b>0기 신청기간</b> ◆&nbsp; 6. 25(금) ~ 6. 30(수)</span>
 		</div>
 		<div id="main_side_box">
 			<div id="main_login_box" class="theme-box">

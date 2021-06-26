@@ -1,5 +1,5 @@
 <?php
-if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가 
+if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 $relation_list = "select * from {$g5['relation_table']} where ch_id='{$ch_id}' order by rm_order asc, rm_id desc";
 $relation = sql_query($relation_list);
@@ -20,15 +20,17 @@ if($mb['mb_id'] == $member['mb_id']) {
 		</colgroup>
 		<tbody>
 			<tr>
-				<th>대상캐릭터</th>
+				<th>참여 모임</th>
 				<td>
-					<input type="hidden" name="re_ch_id" id="search_re_ch_id" value="" />
+					<!-- <input type="hidden" name="re_ch_id" id="search_re_ch_id" value="" />
 					<input type="text" name="search_re_ch_name" value="" id="search_re_ch_name" onkeyup="get_ajax_character(this, 'character_list', 'search_re_ch_id');" />
-					<div id="character_list" class="ajax-list-box theme-box"><div class="list"></div></div>
+					<div id="character_list" class="ajax-list-box theme-box"><div class="list"></div>-->
+					<div><input type="text" name="active_group"/>
+					</div>
 				</td>
 			</tr>
 
-			<tr>
+			<!--<tr>
 				<th>호감도</th>
 				<td>
 					<select name="rm_like" style="width: 100%; margin-bottom: 5px;">
@@ -41,17 +43,17 @@ if($mb['mb_id'] == $member['mb_id']) {
 						<option value="0">0 </option>
 					</select>
 				</td>
-			</tr>
+			</tr>-->
 
 			<tr>
-				<th>관계요약</th>
+				<th>참여 목표</th>
 				<td>
-					<textarea name="rm_memo" placeholder="관계요약입력" class="full" rows="8"></textarea>
+					<textarea name="rm_memo" placeholder="참여 목표 입력" class="full" rows="8"></textarea>
 				</td>
 			</tr>
 
 			<tr>
-				<th>관계링크입력</th>
+				<th>활동링크입력</th>
 				<td>
 					<textarea name="rm_link" placeholder="관계링크입력 : 여러개를 입력할 경우, 엔터로 구분해 주시길 바랍니다.
 ex)
@@ -68,10 +70,10 @@ http://url-2
 					<input type="text" name="rm_order" value="0" class="required frm_input " style="width: 50px;" />
 				</td>
 			</tr>
-			
+
 		</tbody>
 	</table>
-	
+
 	<button type="submit" class="ui-btn full point">추가</button>
 
 	<hr class="padding" />
@@ -81,7 +83,7 @@ http://url-2
 
 <ul class="relation-member-list">
 <?
-	for($i=0; $row = sql_fetch_array($relation); $i++) { 
+	for($i=0; $row = sql_fetch_array($relation); $i++) {
 	$re_ch = get_character($row['re_ch_id']);
 	if($row['rm_memo'] == '') { continue; }
 ?>
@@ -99,9 +101,9 @@ http://url-2
 							<a href="<?=G5_URL?>/mypage/character/relation_delete.php?rm_id=<?=$row['rm_id']?>" class="btn-delete ui-btn small" onclick="return confirm('삭제된 데이터는 복구할 수 없습니다. 삭제 하시겠습니까?');">삭제</a>
 					<? } ?>
 				</div>
-				<div class="rm-like-style">
+				<!--<div class="rm-like-style">
 					<p>
-				<? for($j=0; $j < 5; $j++) { 
+				<? for($j=0; $j < 5; $j++) {
 					$class="";
 					$style = "";
 					if($j < $row['rm_like']) {
@@ -110,11 +112,11 @@ http://url-2
 						$style="opacity: 0.2;";
 					}
 				?>
-					
+
 						<i class="<?=$class?>" style="<?=$style?>"></i>
 				<? } ?>
 					</p>
-				</div>
+				</div>-->
 			</div>
 			<div class="memo  theme-box">
 				<div class="ori-content"><?=nl2br($row['rm_memo'])?></div>
@@ -138,7 +140,7 @@ http://url-2
 				</div>
 <? } ?>
 			</div>
-			
+
 			<ol>
 	<?
 		$row['rm_link'] = nl2br($row['rm_link']);
@@ -182,16 +184,16 @@ function fwrite_submit(f) {
 	return true;
 }
 
-function fn_relation_modify(idx) { 
+function fn_relation_modify(idx) {
 	var f = document.frmRemember_modify;
-	
+
 	var rm_id = idx;
 	var re_ch_id = document.getElementById('re_ch_id_' + idx).value;
 	var rm_memo = document.getElementById('memo_' + idx).value;
 	var rm_link = document.getElementById('link_' + idx).value;
 	var rm_order = document.getElementById('order_' + idx).value;
 	var rm_like = document.getElementById('like_' + idx).value;
-	
+
 	f.rm_id.value = rm_id;
 	f.re_ch_id.value = re_ch_id;
 	f.rm_memo.value = rm_memo;

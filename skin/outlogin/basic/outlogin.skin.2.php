@@ -6,8 +6,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
 
 <div class="logined-skin-basic">
 	<div class="ui-thumb">
-<? if($character['ch_id']) { 
-	if($character['ch_thumb']) { 
+<? if($character['ch_id']) {
+	if($character['ch_thumb']) {
 		echo "
 			<a href='".G5_URL."/mypage/character/viewer.php?ch_id={$character['ch_id']}' class='thumb-box'>
 				<img src='{$character['ch_thumb']}' />
@@ -17,7 +17,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
 	}
 } else {
 	if($is_add_character) {
-		echo "<a href='".G5_URL."/mypage/character/character_form.php' class='ui-btn point'>캐릭터 생성</a>";
+		echo "<a href='".G5_URL."/mypage/character/character_form.php' class='ui-btn point'>신청서 작성</a>";
 	} else {
 		echo "<span class='ui-btn etc'></span>";
 	}
@@ -26,7 +26,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
 
 	<div class="info">
 <?
-	if($character['ch_name']) { 
+	if($character['ch_name']) {
 		echo "<p class='character txt-point'>{$character['ch_name']}</p>";
 	}
 ?>
@@ -37,11 +37,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
 		<? } ?>
 		</p>
 <?
-	if(!$character['ch_name']) { 
-		if($is_add_character) { 
-			echo "<p class='descript'>보유중인 캐릭터가 없습니다.</p>";
-		} else { 
-			echo "<p class='descript'>캐릭터 생성기간이 아닙니다.</p>";
+	if(!$character['ch_name']) {
+		if($is_add_character) {
+			echo "<p class='descript'>보유중인 신청서가 없습니다.</p>";
+		} else {
+			echo "<p class='descript'>신청서 작성기간이 아닙니다.</p>";
 		}
 	}
 ?>
@@ -73,4 +73,3 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
 		</ul>
 	</div>
 </div>
-

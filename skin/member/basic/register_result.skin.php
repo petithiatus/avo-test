@@ -24,11 +24,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 		</section>
 
 		<section>
-			<h2>캐릭터 생성</h2>
+			<h2>신청서 생성</h2>
 			<div class="theme-box">
-				<p>캐릭터 생성은 신청기간 동안 생성하실 수 있습니다.</p>
-				<p>로그인 후 <strong>[ <a href="<?=G5_URL?>/mypage/">MY PAGE</a> > <a href="<?=G5_URL?>/mypage/character/">CHARACTER</a> ]</strong> 메뉴를 통해 생성 및 수정 관리를 하실 수 있습니다.</p>
-				<p>신청기간이 끝난 뒤에 합격된 캐릭터들은 관리자 승인 후 MEMBER LIST 에 자동으로 등록됩니다.</p>
+				<p>신청서 생성은 신청기간 동안 생성하실 수 있습니다.</p>
+				<p>로그인 후 <strong>[ <a href="<?=G5_URL?>/mypage/">마이페이지</a> > <a href="<?=G5_URL?>/mypage/character/">신청서</a> ]</strong> 메뉴를 통해 생성 및 수정 관리를 하실 수 있습니다.</p>
+				<p>신청기간이 끝난 뒤에 스터디 참여 신청자는 관리자 승인 후 MEMBER LIST 에 자동으로 등록됩니다.</p>
 			</div>
 		</section>
 

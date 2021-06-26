@@ -28,13 +28,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 		</section>
 
 		<section id="fregister_private">
-			<h2>캐릭터 유의사항</h2>
+			<h2>신청 유의사항</h2>
 			<div class="theme-box">
 				<?=nl2br($config['cf_privacy'])?>
 			</div>
 			<fieldset class="check-agree">
 				<input type="checkbox" name="agree2" value="1" id="agree21">
-				<label for="agree21">캐릭터 유의사항 내용에 동의합니다.</label>
+				<label for="agree21">신청 유의사항 내용에 동의합니다.</label>
 			</fieldset>
 		</section>
 
@@ -66,5 +66,3 @@ function fregister_submit(f)
 	return true;
 }
 </script>
-
-

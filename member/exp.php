@@ -2,7 +2,7 @@
 include_once('./_common.php');
 
 $ch = get_character($ch_id);
-if(!$ch['ch_id']) alert_close("캐릭터 정보를 확인할 수 없습니다.");
+if(!$ch['ch_id']) alert_close("신청 정보를 확인할 수 없습니다.");
 
 $g5['title'] = $ch['ch_name']." ".$config['cf_exp_name']." 획득 내역";
 include_once('./_head.sub.php');
@@ -29,7 +29,7 @@ $from_record = ($page - 1) * $rows; // 시작 열을 구함
 		<em>
 			<img src="<?=$ch['ch_thumb']?>" />
 		</em>
-		
+
 		<p class="name txt-point"><?=$ch['ch_name']?></p>
 	<? if($config['cf_side_title']) { ?>
 		<p><?=$config['cf_side_title']?> : <?=get_side_name($ch['ch_side'])?></p>

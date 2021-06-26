@@ -12,7 +12,7 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_CSS_URL.'/style.closet.css">',
 
 $cl = array();
 $cl_result = sql_query("select * from {$g5['closthes_table']} where ch_id = '{$ch_id}' order by cl_type desc, cl_id asc");
-for($i=0; $row=sql_fetch_array($cl_result); $i++) { 
+for($i=0; $row=sql_fetch_array($cl_result); $i++) {
 	$cl[$i] = $row;
 }
 
@@ -68,7 +68,7 @@ $(function() {
 	var client_height  = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 	$('.flexslider .slides img').css('max-height', client_height + "px");
 
-	window.onresize= function() { 
+	window.onresize= function() {
 		var client_height  = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 		$('.flexslider .slides img').css('max-height', client_height + "px");
 	};

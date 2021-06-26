@@ -1,22 +1,22 @@
 <?php
 include_once('./_common.php');
 
-if (!($w == "" || $w == "u")) 
+if (!($w == "" || $w == "u"))
 	alert("w 값이 제대로 넘어오지 않았습니다.");
 
 if($member['mb_id'] != $_POST['mb_id'] && !$is_admin) {
 	alert('잘못된 접근입니다', "./index.php");
 }
 
-if($in_id) { 
+if($in_id) {
 	$in = get_inventory_item($in_id);
 }
 
-if($w == '' && !$is_add_character && !$is_admin) { 
-	alert('생성 가능 기한이 지났습니다. 더 이상 캐릭터를 생성할 수 없습니다.', "./index.php");
+if($w == '' && !$is_add_character && !$is_admin) {
+	alert('생성 가능 기한이 지났습니다. 더 이상 신청서를 생성할 수 없습니다.', "./index.php");
 }
-if($w == 'u' && (!$is_mod_character && !$is_admin && $in['it_type'] != '프로필수정')) { 
-	alert('수정 가능 기한이 지났습니다. 더 이상 캐릭터를 수정할 수 없습니다.', "./index.php");
+if($w == 'u' && (!$is_mod_character && !$is_admin && $in['it_type'] != '프로필수정')) {
+	alert('수정 가능 기한이 지났습니다. 더 이상 신청서를 수정할 수 없습니다.', "./index.php");
 }
 
 $character_image_path = G5_DATA_PATH."/character/".$mb_id;
@@ -119,7 +119,7 @@ if($w == '') {
 	$ch_id = sql_insert_id();
 	if($mb['ch_id'] == "") sql_query("update {$g5['member_table']} set ch_id = '{$ch_id}' where mb_id = '{$mb['mb_id']}'");
 
-	if($ch_body) { 
+	if($ch_body) {
 		$sql = " insert into {$g5['closthes_table']}
 					set ch_id			= '{$ch_id}',
 						cl_subject		= '기본의상',
@@ -129,26 +129,26 @@ if($w == '') {
 		sql_query($sql);
 	}
 
-} else { 
+} else {
 
 	// 기존 캐릭터 데이터 호출
 	$ch = get_character($ch_id);
 
 	if(!$ch['ch_id'])
-		alert("캐릭터 정보가 존재하지 않습니다.");
+		alert("신청 정보가 존재하지 않습니다.");
 
-	
-	if($ad['ad_use_thumb'] && !$ad['ad_url_thumb'] && $ch['ch_thumb'] != $ch_thumb) { 
+
+	if($ad['ad_use_thumb'] && !$ad['ad_url_thumb'] && $ch['ch_thumb'] != $ch_thumb) {
 		// 해당 서버에 업로드 한 파일일 경우
 		$prev_file_path = str_replace(G5_URL, G5_PATH, $ch['ch_thumb']);
 		@unlink($prev_file_path);
 	}
-	if($ad['ad_use_head'] && !$ad['ad_url_head'] && $ch['ch_head'] != $ch_head) { 
+	if($ad['ad_use_head'] && !$ad['ad_url_head'] && $ch['ch_head'] != $ch_head) {
 		// 해당 서버에 업로드 한 파일일 경우
 		$prev_file_path = str_replace(G5_URL, G5_PATH, $ch['ch_head']);
 		@unlink($prev_file_path);
 	}
-	if($ad['ad_use_body'] && !$ad['ad_url_body'] && $ch['ch_body'] != $ch_body) { 
+	if($ad['ad_use_body'] && !$ad['ad_url_body'] && $ch['ch_body'] != $ch_body) {
 		// 해당 서버에 업로드 한 파일일 경우
 		$prev_file_path = str_replace(G5_URL, G5_PATH, $ch['ch_body']);
 		@unlink($prev_file_path);
@@ -159,21 +159,21 @@ if($w == '') {
 				set {$sql_article}
 				where ch_id = '{$ch_id}'";
 	sql_query($sql);
-	
+
 	if($mb['ch_id'] == "") sql_query("update {$g5['member_table']} set ch_id = '{$ch_id}' where mb_id = '{$mb['mb_id']}'");
 
-	if($ch_body) { 
+	if($ch_body) {
 		// 옷장정보 불러오기
 		$cl_sql = "select cl_id from {$g5['closthes_table']} where ch_id = '{$ch_id}' and cl_type = 'default'";
 		$cl = sql_fetch($cl_sql);
 
-		if($cl['cl_id']) { 
+		if($cl['cl_id']) {
 			// 정보 업데이트
 			$sql = " update {$g5['closthes_table']}
 						set cl_path = '{$ch_body}'
 						where cl_id = '{$cl['cl_id']}'";
 			sql_query($sql);
-		} else { 
+		} else {
 			// 신규등록
 			$sql = " insert into {$g5['closthes_table']}
 					set ch_id			= '{$ch_id}',
@@ -193,9 +193,9 @@ $av_result = sql_query("select * from {$g5['value_table']} where ch_id = '{$ch_i
 for($i = 0; $row = sql_fetch_array($av_result); $i++) {
 	$ch['av_'.$row['ar_code']] = $row['av_value'];
 }
-for($i=0; $i < count($ar_code); $i++) { 
+for($i=0; $i < count($ar_code); $i++) {
 	$key = 'av_'.$ar_code[$i];
-	
+
 	// 파일 등록일 경우, 이미지 업로드 처리
 	if ($_FILES['av_value_file']['name'][$i]) {
 		// 확장자 따기
@@ -207,18 +207,18 @@ for($i=0; $i < count($ar_code); $i++) {
 		$av_value[$i] = $character_image_url."/".$image_name;
 	}
 
-	if($ch[$key] != $av_value[$i] && strstr(G5_URL, $ch[$key])) { 
+	if($ch[$key] != $av_value[$i] && strstr(G5_URL, $ch[$key])) {
 		// 해당 서버에 업로드 한 파일일 경우
 		$prev_file_path = str_replace(G5_URL, G5_PATH, $ch[$key]);
 		@unlink($prev_file_path);
 	}
-	
+
 	$sql_article = "
 		ch_id		= '{$ch_id}',
 		ar_code		= '{$ar_code[$i]}',
 		av_value	= '{$av_value[$i]}'
 	";
-	
+
 	if(isset($ch[$key])) {
 		// 업데이트
 		$sql = " update {$g5['value_table']}
@@ -243,7 +243,7 @@ if(count($st_id) > 0) {
 	for($i=0; $i < count($st_id); $i++) {
 		$temp_st_id = $st_id[$i];
 		$old_sc = sql_fetch("select * from {$g5['status_table']} where ch_id = '{$ch_id}' and st_id = '{$temp_st_id}'");
-		if($old_sc['sc_id']) { 
+		if($old_sc['sc_id']) {
 			// 업데이트
 			$sql = " update {$g5['status_table']}
 						set sc_max = '{$sc_max[$i]}'

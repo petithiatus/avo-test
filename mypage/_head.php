@@ -12,7 +12,7 @@ $ad = $article;
 <nav id="submenu" class="scroll-fix">
 	<ul>
 		<li><a href="<? echo G5_URL; ?>/mypage/"			><span>계정정보</span></a></li>
-		<li><a href="<? echo G5_URL; ?>/mypage/character"	><span>캐릭터</span></a></li>
+		<li><a href="<? echo G5_URL; ?>/mypage/character"	><span>신청서</span></a></li>
 		<li><a href="<? echo G5_URL; ?>/mypage/log"			><span>로그내역</span></a></li>
 	<? if($ad['ad_use_money']) { ?>
 		<li><a href="<? echo G5_URL; ?>/mypage/money"		><span><?=$config['cf_money']?>관리</span></a></li>

@@ -5,7 +5,7 @@ define('_CHARACTER_FORM_', TRUE);
 
 $mb = $member;
 
-if($in_id) { 
+if($in_id) {
 	$in = get_inventory_item($in_id);
 }
 
@@ -18,7 +18,7 @@ for($i = 0; $row = sql_fetch_array($ar_result); $i++) {
 	$ch_ar[$i] = $row;
 }
 
-if($ad['ad_use_status']) { 
+if($ad['ad_use_status']) {
 	// 스탯 정보 가져오기
 	$status = array();
 	$st_result = sql_query("select * from {$g5['status_config_table']} order by st_order asc");
@@ -32,7 +32,7 @@ if($ad['ad_use_status']) {
 if($config['cf_side_title']) {
 	$ch_si = array();
 	$side_result = sql_query("select si_id, si_name from {$g5['side_table']} where si_auth <= '{$member['mb_level']}' order by si_id asc");
-	for($i=0; $row = sql_fetch_array($side_result); $i++) { 
+	for($i=0; $row = sql_fetch_array($side_result); $i++) {
 		$ch_si[$i]['name'] = $row['si_name'];
 		$ch_si[$i]['id'] = $row['si_id'];
 	}
@@ -42,7 +42,7 @@ if($config['cf_side_title']) {
 if($config['cf_class_title']) {
 	$ch_cl = array();
 	$class_result = sql_query("select cl_id, cl_name from {$g5['class_table']} where cl_auth <= '{$member['mb_level']}' order by cl_id asc");
-	for($i=0; $row = sql_fetch_array($class_result); $i++) { 
+	for($i=0; $row = sql_fetch_array($class_result); $i++) {
 		$ch_cl[$i]['name'] = $row['cl_name'];
 		$ch_cl[$i]['id'] = $row['cl_id'];
 	}
@@ -50,14 +50,14 @@ if($config['cf_class_title']) {
 }
 
 if($w == "") {
-	if(!$is_add_character && !$is_admin) { 
-		alert("현재 캐릭터 생성 기간이 아닙니다.", "./index.php");
+	if(!$is_add_character && !$is_admin) {
+		alert("현재 스터디 신청 기간이 아닙니다.", "./index.php");
 	}
 	$ch = sql_fetch("select count(ch_id) as cnt from {$g5['character_table']} where mb_id = '{$member['mb_id']}'");
 
 	// 생성한 캐릭터 갯수 제한 체크
-	if($ch['cnt'] > $config['cf_character_count']) { 
-		alert("생성 가능한 캐릭터 갯수를 초과하였습니다.", "./index.php");
+	if($ch['cnt'] > $config['cf_character_count']) {
+		alert("생성 가능한 신청서 갯수를 초과하였습니다.", "./index.php");
 	}
 
 	$ch['ch_state'] = '수정중';
@@ -68,11 +68,11 @@ if($w == "") {
 } else {
 	$ch = sql_fetch("select * from {$g5['character_table']} where ch_id = '{$ch_id}'");
 	if(empty($ch)){
-		alert("캐릭터 내역이 존재하지 않습니다.");
+		alert("신청 내역이 존재하지 않습니다.");
 	}
-	if(!$is_mod_character && !$is_admin){ 
+	if(!$is_mod_character && !$is_admin){
 		if($in['ch_id'] != $ch['ch_id'] || $in['it_type'] != '프로필수정') {
-			alert("캐릭터 수정 기간이 아닙니다.");
+			alert("신청 수정 기간이 아닙니다.");
 		}
 	}
 
@@ -108,7 +108,7 @@ if($w == "") {
 		</colgroup>
 		<tbody>
 			<tr>
-				<th>신청서상태</th>
+				<th>신청서 상태</th>
 				<td>
 					<?php echo help('※ 신청서 작성 완료 후, <span class="txt-point">[수정완료]</span>로 변경해 주시길 바랍니다.') ?>
 					<select name="ch_state">
@@ -122,7 +122,7 @@ if($w == "") {
 	<hr class="padding" />
 <? } ?>
 
-	<h3 class="sub-title">캐릭터 기본정보</h3>
+	<h3 class="sub-title">기본정보</h3>
 
 	<table class="theme-form">
 		<colgroup>
@@ -170,7 +170,7 @@ if($w == "") {
 	<hr class="padding" />
 
 
-	<h3 class="sub-title">캐릭터 이미지 정보</h3>
+	<h3 class="sub-title">이미지 정보</h3>
 
 	<table class="theme-form">
 		<colgroup>
@@ -241,7 +241,7 @@ if($w == "") {
 
 <?if($ad['ad_use_status']) { ?>
 	<h3 class="sub-title">
-		캐릭터 스탯 정보
+		스탯 정보
 		<span style="float: right;">
 			<em class="txt-point" data-type="point_space"><?=get_space_status($ch['ch_id'])?></em>
 			/
@@ -255,20 +255,20 @@ if($w == "") {
 <? } ?>
 
 <? if(count($ch_ar) > 0) { ?>
-	<h3 class="sub-title">추가 캐릭터 프로필 정보</h3>
+	<h3 class="sub-title">추가 프로필 정보</h3>
 	<table class="theme-form">
 		<colgroup>
 			<col style="width: 110px;" />
 			<col />
 		</colgroup>
 		<tbody>
-	<? for($i=0; $i < count($ch_ar); $i++) { 
+	<? for($i=0; $i < count($ch_ar); $i++) {
 		$ar = $ch_ar[$i];
 		$key = $ar['ar_code'];
 
 		$style = "";
 		if($ar['ar_size']) {
-			if($ar['ar_type'] != 'textarea') 
+			if($ar['ar_type'] != 'textarea')
 				$style = "style = 'width: {$ar['ar_size']}px;'";
 			else
 				$style = "style = 'width: 100%; height: {$ar['ar_size']}px;'";
@@ -282,7 +282,7 @@ if($w == "") {
 					<?=$ar['ar_name']?>
 				</th>
 				<?
-					if($ar['ar_type'] == 'file' || $ar['ar_type'] == 'url') { 
+					if($ar['ar_type'] == 'file' || $ar['ar_type'] == 'url') {
 						// 이미지 타입의 파일
 				?>
 
@@ -290,7 +290,7 @@ if($w == "") {
 						<?php echo help($ar['ar_help']) ?>
 					<? if($ar['ar_type'] == 'url') { ?>
 						<input type="text" name="av_value[<?=$i?>]" value="<?php echo $ch[$key] ?>" <?=$style?> />
-					<? } else { 
+					<? } else {
 						// 직접 업로드
 					?>
 						<input type="file" name="av_value_file[<?=$i?>]" />
@@ -307,7 +307,7 @@ if($w == "") {
 					<td>
 						<?php echo help($ar['ar_help']) ?>
 					<?
-						if($ar['ar_type'] == 'text') { 
+						if($ar['ar_type'] == 'text') {
 					?>
 						<input type="text" name="av_value[<?=$i?>]" value="<?php echo $ch[$key] ?>" <?=$style?> /> <?=$ar['ar_text']?>
 
@@ -315,7 +315,7 @@ if($w == "") {
 
 						<textarea name="av_value[<?=$i?>]" <?=$style?>><?php echo $ch[$key] ?></textarea>
 
-					<? } else if($ar['ar_type'] == 'select') { 
+					<? } else if($ar['ar_type'] == 'select') {
 						$option = explode("||", $ar['ar_text']);
 					?>
 						<select name="av_value[<?=$i?>]" <?=$style?>>
@@ -332,11 +332,11 @@ if($w == "") {
 		</tbody>
 	</table>
 <? } ?>
-	
+
 	<hr class="padding" />
 	<div class="txt-center">
 		<button type="submit" class="ui-btn point">
-			캐릭터 정보 <?=$w == 'u' ? "수정" : "등록" ?>
+			신청서 정보 <?=$w == 'u' ? "수정" : "등록" ?>
 		</button>
 
 		<a href="./index.php" class="ui-btn">취소</a>

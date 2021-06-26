@@ -3,7 +3,7 @@ include_once("./_common.php");
 
 $ch = sql_fetch("select * from {$g5['character_table']} where ch_id = '{$ch_id}'");
 if (!$ch['ch_id']) {
-	alert("{$ch['ch_id']} : 캐릭터 자료가 존재하지 않습니다.");
+	alert("{$ch['ch_id']} : 신청 자료가 존재하지 않습니다.");
 }
 if($ch['mb_id'] != $member['mb_id'] && !$is_admin) {
 	alert("삭제권한이 없습니다.");
