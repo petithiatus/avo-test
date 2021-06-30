@@ -35,7 +35,7 @@
 	float: left;
 	margin-bottom: 20px;
 }
-.twitter	{ overflow:auto;max-height: 100%; }
+.twitter	{ overflow:auto;max-height: 200px; }
 
 #main_image_box	{
 	position: relative;
