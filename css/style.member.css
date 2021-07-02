@@ -22,12 +22,21 @@
 
 @media all and (max-width: 1000px) {
 	#submenu li.menu-first	{ display: block; text-align: center; }
+	.ui-thumb img {width:auto; height:150px;
+	}
 }
 
-@media all and (max-width: 640px) { 
+@media all and (max-width: 640px) {
 	.ready-member-list li	{ width: 100%; }
+	.ui-thumb img {
+		width: auto;
+		height: 50px;
+	}
 }
 
+.ui-thumb img {width: auto;
+	max-height: 200px;
+}
 
 #member_page	{ padding: 20px 0; }
 #member_page h2	{ padding-bottom: 20px; }
