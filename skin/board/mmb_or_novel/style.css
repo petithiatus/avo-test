@@ -94,12 +94,12 @@
 #log_list .item.story .ui-pic .pic-data.ui-slide .inner		{ display: -webkit-box; white-space: normal; height: 100px; word-wrap: break-word; -webkit-line-clamp: 4; -webkit-box-orient: vertical; padding: 0; }
 #log_list .item.story .ui-pic .pic-data.ui-slide .slide-pop-open-btn		{ display: none; }
 #log_list .item.story .ui-pic .pic-data .slide-open-btn						{ display: block; position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 10; overflow: hidden; text-indent: -999px; }
-#log_list .item.story .ui-pic .pic-data .slide-open-btn:hover				{ background: rgba(0, 0, 0, .5); }
+#log_list .item.story .ui-pic .pic-data .slide-open-btn:hover				{ background: rgba(244, 224, 144, .4); }
 #log_list .item.story .ui-pic .pic-data .slide-open-btn:before				{ content: "+"; font-size: 40px; font-weight: 900; display: block; position: absolute; width: 45px; height: 45px; top: 0; left: 0; background: #fff; opacity: .5; text-indent: 0; text-align: center; line-height: 45px; }
 
 #log_list .item.story .ui-pic .pic-data.ui-slide.on .slide-open-btn				{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, .7); z-index: 50; }
 #log_list .item.story .ui-pic .pic-data.ui-slide.on .slide-open-btn:before		{ display: none; }
-#log_list .item.story .ui-pic .pic-data.ui-slide.on .inner						{ display: block; position: fixed; padding-top: 40px; top: 20px; bottom: 20px; max-width: 700px; left: 50%; margin-left: -350px; height: auto; overflow: auto; background: #000; no-repeat 0 0; background-size: cover; z-index: 51; -webkit-line-clamp: inherit; -webkit-box-orient: vertical; border: 1px solid rgba(255, 255, 255, .2); }
+#log_list .item.story .ui-pic .pic-data.ui-slide.on .inner						{ display: block; position: fixed; padding-top: 40px; top: 20px; bottom: 20px; max-width: 700px; left: 50%; margin-left: -350px; height: auto; overflow: auto; background:rgba(244, 224, 144, .9); no-repeat 0 0; background-size: cover; z-index: 51; -webkit-line-clamp: inherit; -webkit-box-orient: vertical; border: 1px solid rgba(255, 255, 255, .2); }
 #log_list .item.story .ui-pic .pic-data.ui-slide.on .data-inner					{ position: relative; padding: 20px 30px 100px; }
 #log_list .item.story .ui-pic .pic-data.ui-slide.on .slide-pop-open-btn			{ display: block; position: fixed; top: 30px; left: 50%; margin-left: 300px; z-index: 52; width: 30px; height: 30px; overflow: hidden; text-indent: -999px; transform: rotate(45deg); }
 #log_list .item.story .ui-pic .pic-data.ui-slide.on .slide-pop-open-btn:before,
@@ -225,7 +225,7 @@
 #board_category input							{ display: none; }
 #board_category li								{ display: inline-block; line-height: 31px; }
 #board_category li label						{ display: inline-block; cursor: pointer; padding: 0 15px;}
-#board_category input:checked + label			{  } 
+#board_category input:checked + label			{  }
 #board_category input:checked + label:before	{ content: "《 "; }
 #board_category input:checked + label:after	{ content: " 》"; }
 
@@ -243,7 +243,7 @@
 .comment-data input[type="text"]	{ width: 100%; box-sizing: border-box; }
 
 
-.ui-mmb-list-write	{ 
+.ui-mmb-list-write	{
 	position: relative;
 	max-width: 400px;
 	margin: 0 auto;
@@ -273,4 +273,3 @@
 .guest-box .name label	{ display: block; position: absolute; top: 0; left: 0; width: 60px; line-height: 30px; }
 .guest-box .pw			{ position: relative; padding-left: 60px; box-sizing: border-box; }
 .guest-box .pw label	{ display: block; position: absolute; top: 0; left: 0; width: 60px; line-height: 30px; }
-

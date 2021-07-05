@@ -20,6 +20,11 @@
 .ready-member-list li .ui-profile span		{ display: block; padding: 3px 0; font-size: 11px; }
 .ready-member-list li .ui-profile span.owner	{ text-align: right; margin-top: 5px; padding-top: 5px; }
 
+@media all and (min-width: 1001px) {
+	#submenu li.menu-first	{ display: block; text-align: center; }
+	.ui-thumb img {width:auto; height:200px; }
+}
+
 @media all and (max-width: 1000px) {
 	#submenu li.menu-first	{ display: block; text-align: center; }
 	.ui-thumb img {width:auto; height:150px;
@@ -30,13 +35,12 @@
 	.ready-member-list li	{ width: 100%; }
 	.ui-thumb img {
 		width: auto;
-		height: 50px;
+		height: 150px;
 	}
+	#member_page .member-list li {position: relative;}
 }
 
-.ui-thumb img {width: auto;
-	max-height: 200px;
-}
+
 
 #member_page	{ padding: 20px 0; }
 #member_page h2	{ padding-bottom: 20px; }
